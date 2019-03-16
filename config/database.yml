@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: railsbench_production
-  username: railsbench
-  password: <%= ENV['RAILSBENCH_DATABASE_PASSWORD'] %>
