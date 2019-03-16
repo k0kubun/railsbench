@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+# Usage:
+#   WARMUP=0 BENCH=10000 bin/bench /posts/1.json
+
+ENV['RAILS_ENV'] ||= 'production'
+require_relative '../config/boot'
+require 'bundler/setup'
+require_relative '../config/environment'
+
+class Bench
+  def initialize(warmup:, benchmark:, path:)
+    @warmup = warmup
+    @benchmark = benchmark
+    @benchmark = path
+  end
+end
+
+bench = Bench.new(
+  warmup: Integer(ENV.fetch('WARMUP', 0)),
+  benchmark: Integer(ENV.fetch('BENCH', 10000)),
+  path: ARGV.first || '/posts',
+)
+bench.percentile
