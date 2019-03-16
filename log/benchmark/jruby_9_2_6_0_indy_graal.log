@@ -1,0 +1,1052 @@
++ for request_path in /posts /posts.json /posts/1 /posts/1.json
++ sleep 12
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+apr_pollset_poll: The timeout specified has expired (70007)
+Total of 2 requests completed
++ ab -n 1000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+apr_pollset_poll: The timeout specified has expired (70007)
++ pkill -9 java
++ sleep 5
+/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/jruby.bash: line 452: 18381 Killed                  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" ${classmod_flag} "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" "-Djruby.home=$JRUBY_HOME" "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby "-Djruby.shell=$JRUBY_SHELL" $java_class $mode "$@"
++ for request_path in /posts /posts.json /posts/1 /posts/1.json
++ sleep 12
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts.json
+Document Length:        39548 bytes
+
+Concurrency Level:      4
+Time taken for tests:   154.340 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      399970000 bytes
+HTML transferred:       395480000 bytes
+Requests per second:    64.79 [#/sec] (mean)
+Time per request:       61.736 [ms] (mean)
+Time per request:       15.434 [ms] (mean, across all concurrent requests)
+Transfer rate:          2530.75 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    50   62  52.0     54    1675
+Waiting:       49   61  51.3     53    1664
+Total:         50   62  52.0     54    1675
+
+Percentage of the requests served within a certain time (ms)
+  50%     54
+  66%     55
+  75%     57
+  80%     59
+  90%     71
+  95%     83
+  98%     99
+  99%    159
+ 100%   1675 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts.json
+Document Length:        39548 bytes
+
+Concurrency Level:      4
+Time taken for tests:   14.365 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      39997000 bytes
+HTML transferred:       39548000 bytes
+Requests per second:    69.61 [#/sec] (mean)
+Time per request:       57.461 [ms] (mean)
+Time per request:       14.365 [ms] (mean, across all concurrent requests)
+Transfer rate:          2719.05 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    50   57   8.7     53     101
+Waiting:       49   57   8.6     53     100
+Total:         50   57   8.7     53     101
+
+Percentage of the requests served within a certain time (ms)
+  50%     53
+  66%     58
+  75%     61
+  80%     62
+  90%     68
+  95%     78
+  98%     85
+  99%     92
+ 100%    101 (longest request)
++ pkill -9 java
++ sleep 5
+/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/jruby.bash: line 452: 19033 Killed                  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" ${classmod_flag} "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" "-Djruby.home=$JRUBY_HOME" "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby "-Djruby.shell=$JRUBY_SHELL" $java_class $mode "$@"
++ for request_path in /posts /posts.json /posts/1 /posts/1.json
++ sleep 12
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+apr_pollset_poll: The timeout specified has expired (70007)
++ ab -n 1000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+apr_pollset_poll: The timeout specified has expired (70007)
++ pkill -9 java
++ sleep 5
+/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/jruby.bash: line 452: 20503 Killed                  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" ${classmod_flag} "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" "-Djruby.home=$JRUBY_HOME" "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby "-Djruby.shell=$JRUBY_SHELL" $java_class $mode "$@"
++ for request_path in /posts /posts.json /posts/1 /posts/1.json
++ sleep 12
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts/1.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1.json
+Document Length:        279 bytes
+
+Concurrency Level:      4
+Time taken for tests:   30.342 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      7280000 bytes
+HTML transferred:       2790000 bytes
+Requests per second:    329.57 [#/sec] (mean)
+Time per request:       12.137 [ms] (mean)
+Time per request:       3.034 [ms] (mean, across all concurrent requests)
+Transfer rate:          234.31 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     5   12  18.2      8     616
+Waiting:        5   11  17.6      8     607
+Total:          5   12  18.2      8     617
+
+Percentage of the requests served within a certain time (ms)
+  50%      8
+  66%     10
+  75%     12
+  80%     15
+  90%     20
+  95%     25
+  98%     30
+  99%     45
+ 100%    617 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts/1.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1.json
+Document Length:        279 bytes
+
+Concurrency Level:      4
+Time taken for tests:   1.729 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      728000 bytes
+HTML transferred:       279000 bytes
+Requests per second:    578.32 [#/sec] (mean)
+Time per request:       6.917 [ms] (mean)
+Time per request:       1.729 [ms] (mean, across all concurrent requests)
+Transfer rate:          411.15 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     5    7   1.4      6      15
+Waiting:        5    6   1.3      6      14
+Total:          5    7   1.4      6      15
+
+Percentage of the requests served within a certain time (ms)
+  50%      6
+  66%      7
+  75%      8
+  80%      8
+  90%      9
+  95%     10
+  98%     10
+  99%     12
+ 100%     15 (longest request)
++ pkill -9 java
++ sleep 5
+/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/jruby.bash: line 452: 21166 Killed                  "$JAVACMD" $PROFILE_ARGS $JAVA_OPTS "$JFFI_OPTS" "${java_args[@]}" ${classmod_flag} "$JRUBY_CP$CP_DELIMITER$CP$CP_DELIMITER$CLASSPATH" "-Djruby.home=$JRUBY_HOME" "-Djruby.lib=$JRUBY_HOME/lib" -Djruby.script=jruby "-Djruby.shell=$JRUBY_SHELL" $java_class $mode "$@"
+
+
+#
+# 2nd attempt
+#
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Thread[JVMCI CompilerThread0,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 108|FrameState@-3[AFTER_BCI]
+        at node: 1140|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To print a message for a compilation failure without retrying the compilation, set CompilationFailureAction to Print (e.g., -Dgraal.CompilationFailureAction=Print).
+Retrying compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)
+
+Completed 2000 requests
+[thread:5] scope: JVMCI CompilerThread0
+    [thread:5] scope: JVMCI CompilerThread0.Compiling.GraalCompiler
+    Context: StructuredGraph:88038{HotSpotMethod<monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)>}
+          [thread:5] scope: JVMCI CompilerThread0.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration
+          Exception raised in scope JVMCI CompilerThread0.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 265|FrameState@-3[AFTER_BCI]
+                at parsing org.jruby.ext.thread.ConditionVariable.broadcast(ThreadContext) [bci: -3]
+                at parsing java.lang.invoke.LambdaForm$DMH.0x00000008007ce840.invokeVirtual(Object, Object, Object) [bci: 11]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800835440.invoke(Object, Object, Object, Object) [bci: 36]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800804440.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800804440.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.Invokers$Holder.linkToCallSite(Object, Object, Object, Object) [bci: 17]
+                at parsing home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/monitor.rb:147) [bci: 65]
+                at node: 1371|Read
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:269)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+                at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+
+          Context obj org.graalvm.compiler.core.LIRGenerationPhase@2b3eb054
+          Context obj org.graalvm.compiler.nodes.StructuredGraph$ScheduleResult@757effc0
+          Context obj StructuredGraph:88038{HotSpotMethod<monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)>}
+          Context obj jdk.vm.ci.hotspot.HotSpotCodeCacheProvider@4b11f666
+          Context obj DebugDumpScope[33705]
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Thread[JVMCI CompilerThread0,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$spawn_thread$0(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 786|FrameState@-3[AFTER_BCI]
+        at node: 6541|NullCheck
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.extended.NullCheckNode.generate(NullCheckNode.java:56)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To print a message for a compilation failure without retrying the compilation, set CompilationFailureAction to Print (e.g., -Dgraal.CompilationFailureAction=Print).
+Retrying compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$spawn_thread$0(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)
+
+[thread:5] scope: JVMCI CompilerThread0
+    [thread:5] scope: JVMCI CompilerThread0.Compiling.GraalCompiler
+    Context: StructuredGraph:99403{HotSpotMethod<thread_pool_dot_rb.RUBY$block$spawn_thread$0(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)>}
+          [thread:5] scope: JVMCI CompilerThread0.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration
+          Exception raised in scope JVMCI CompilerThread0.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 1783|FrameState@-3[AFTER_BCI]
+                at parsing org.jruby.ext.thread.ConditionVariable.signal(ThreadContext) [bci: -3]
+                at parsing java.lang.invoke.LambdaForm$DMH.0x00000008007ce840.invokeVirtual(Object, Object, Object) [bci: 11]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800835440.invoke(Object, Object, Object, Object) [bci: 36]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800804440.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x0000000800804440.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.Invokers$Holder.linkToCallSite(Object, Object, Object, Object) [bci: 17]
+                at parsing home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$spawn_thread$0(/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/gems/shared/gems/puma-3.12.0-java/lib/puma/thread_pool.rb:118) [bci: 310]
+                at node: 7843|NullCheck
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.extended.NullCheckNode.generate(NullCheckNode.java:56)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:269)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+                at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+
+          Context obj org.graalvm.compiler.core.LIRGenerationPhase@4bd7e948
+          Context obj org.graalvm.compiler.nodes.StructuredGraph$ScheduleResult@3243bb34
+          Context obj StructuredGraph:99403{HotSpotMethod<thread_pool_dot_rb.RUBY$block$spawn_thread$0(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)>}
+          Context obj jdk.vm.ci.hotspot.HotSpotCodeCacheProvider@4b11f666
+          Context obj DebugDumpScope[35488]
+Completed 6000 requests
+Warning: adjusting CompilationFailureAction from Diagnose to Print after MaxCompilationProblemsPerAction (2) failed compilations
+Thread[JVMCI CompilerThread0,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$\=\^\^$1(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 181|FrameState@-3[AFTER_BCI]
+        at node: 2471|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To capture more information for diagnosing or reporting a compilation failure, set CompilationFailureAction to Diagnose or ExitVM (e.g., -Dgraal.CompilationFailureAction=Diagnose).
+
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Thread[JVMCI CompilerThread0,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$signal$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 108|FrameState@-3[AFTER_BCI]
+        at node: 1140|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To capture more information for diagnosing or reporting a compilation failure, set CompilationFailureAction to Diagnose or ExitVM (e.g., -Dgraal.CompilationFailureAction=Diagnose).
+
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   81.575 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      534224464 bytes
+HTML transferred:       527190000 bytes
+Requests per second:    122.59 [#/sec] (mean)
+Time per request:       32.630 [ms] (mean)
+Time per request:       8.157 [ms] (mean, across all concurrent requests)
+Transfer rate:          6395.42 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:    20   33  36.9     26    1202
+Waiting:       20   32  36.3     25    1188
+Total:         20   33  36.9     26    1202
+
+Percentage of the requests served within a certain time (ms)
+  50%     26
+  66%     31
+  75%     36
+  80%     38
+  90%     43
+  95%     52
+  98%     70
+  99%     85
+ 100%   1202 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   5.860 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      53422308 bytes
+HTML transferred:       52719000 bytes
+Requests per second:    170.65 [#/sec] (mean)
+Time per request:       23.440 [ms] (mean)
+Time per request:       5.860 [ms] (mean, across all concurrent requests)
+Transfer rate:          8902.82 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    20   23   3.9     22      44
+Waiting:       20   23   3.9     21      43
+Total:         20   23   3.9     22      44
+
+Percentage of the requests served within a certain time (ms)
+  50%     22
+  66%     22
+  75%     22
+  80%     24
+  90%     28
+  95%     35
+  98%     36
+  99%     38
+ 100%     44 (longest request)
++ pkill -9 java
+
+
+#
+# 3rd attempt
+#
++ JAVA_HOME=/opt/jdk-11.0.2
++ JAVA_OPTS='-XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCI -XX:+UseJVMCICompiler'
++ JRUBY_OPTS=-Xcompile.invokedynamic=true
++ jruby.bash -v /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/bundle exec /home/k0kubun/.rbenv/versions/jruby-9.2.6.0/bin/puma -e production --threads=4
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b OpenJDK 64-Bit Server VM 11.0.2+7 on 11.0.2+7 +indy +jit [linux-x86_64]
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.jruby.ext.openssl.SecurityHelper (file:/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/jopenssl.jar) to constructor java.security.cert.CertificateFactory(java.security.cert.CertificateFactorySpi,java.security.Provider,java.lang.String)
+WARNING: Please consider reporting this to the maintainers of org.jruby.ext.openssl.SecurityHelper
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Puma starting in single mode...
+* Version 3.12.0 (jruby 9.2.6.0 - ruby 2.5.3), codename: Llamas in Pajamas
+* Min threads: 4, max threads: 4
+* Environment: production
+[bootsnap/setup] Load path caching is not supported on this implementation of Ruby
+[bootsnap/setup] bytecode caching is not supported on this implementation of Ruby
+[bootsnap/setup] YAML parsing caching is not supported on this implementation of Ruby
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
++ ab -n 10000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Thread[JVMCI CompilerThread1,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 108|FrameState@-3[AFTER_BCI]
+        at node: 1140|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To print a message for a compilation failure without retrying the compilation, set CompilationFailureAction to Print (e.g., -Dgraal.CompilationFailureAction=Print).
+Retrying compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)
+
+[thread:6] scope: JVMCI CompilerThread1
+    [thread:6] scope: JVMCI CompilerThread1.Compiling.GraalCompiler
+    Context: StructuredGraph:82458{HotSpotMethod<monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)>}
+          [thread:6] scope: JVMCI CompilerThread1.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration
+          Exception raised in scope JVMCI CompilerThread1.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 265|FrameState@-3[AFTER_BCI]
+                at parsing org.jruby.ext.thread.ConditionVariable.broadcast(ThreadContext) [bci: -3]
+                at parsing java.lang.invoke.LambdaForm$DMH.0x00000008007ab840.invokeVirtual(Object, Object, Object) [bci: 11]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080084c840.invoke(Object, Object, Object, Object) [bci: 36]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080080ec40.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080080ec40.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.Invokers$Holder.linkToCallSite(Object, Object, Object, Object) [bci: 17]
+                at parsing home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$broadcast$0(/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/stdlib/monitor.rb:147) [bci: 65]
+                at node: 1371|Read
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:269)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+                at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+
+          Context obj org.graalvm.compiler.core.LIRGenerationPhase@d6a21
+          Context obj org.graalvm.compiler.nodes.StructuredGraph$ScheduleResult@6e4bf14
+          Context obj StructuredGraph:82458{HotSpotMethod<monitor_dot_rb.RUBY$method$broadcast$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String)>}
+          Context obj jdk.vm.ci.hotspot.HotSpotCodeCacheProvider@51f3231d
+          Context obj DebugDumpScope[32515]
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Thread[JVMCI CompilerThread1,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$\=\^\^$1(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 181|FrameState@-3[AFTER_BCI]
+        at node: 2471|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To print a message for a compilation failure without retrying the compilation, set CompilationFailureAction to Print (e.g., -Dgraal.CompilationFailureAction=Print).
+Retrying compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$\=\^\^$1(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)
+
+Completed 6000 requests
+[thread:6] scope: JVMCI CompilerThread1
+    [thread:6] scope: JVMCI CompilerThread1.Compiling.GraalCompiler
+    Context: StructuredGraph:100614{HotSpotMethod<thread_pool_dot_rb.RUBY$block$\=\^\^$1(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)>}
+          [thread:6] scope: JVMCI CompilerThread1.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration
+          Exception raised in scope JVMCI CompilerThread1.Compiling.GraalCompiler.BackEnd.EmitLIR.LIRGeneration: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 551|FrameState@-3[AFTER_BCI]
+                at parsing org.jruby.ext.thread.ConditionVariable.signal(ThreadContext) [bci: -3]
+                at parsing java.lang.invoke.LambdaForm$DMH.0x00000008007ab840.invokeVirtual(Object, Object, Object) [bci: 11]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080084c840.invoke(Object, Object, Object, Object) [bci: 36]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080080ec40.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.DelegatingMethodHandle$Holder.delegate(Object, Object, Object, Object) [bci: 17]
+                at parsing java.lang.invoke.LambdaForm$MH.0x000000080080ec40.guard(Object, Object, Object, Object) [bci: 78]
+                at parsing java.lang.invoke.Invokers$Holder.linkToCallSite(Object, Object, Object, Object) [bci: 17]
+                at parsing home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.gems.shared.gems.puma_minus_3_dot_12_dot_0_minus_java.lib.puma.thread_pool_dot_rb.RUBY$block$\=\^\^$1(/home/k0kubun/.rbenv/versions/jruby-9.2.6.0/lib/ruby/gems/shared/gems/puma-3.12.0-java/lib/puma/thread_pool.rb:165) [bci: 302]
+                at node: 3161|Read
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:269)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+                at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+                at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+
+          Context obj org.graalvm.compiler.core.LIRGenerationPhase@3e21bccc
+          Context obj org.graalvm.compiler.nodes.StructuredGraph$ScheduleResult@5e6b40ea
+          Context obj StructuredGraph:100614{HotSpotMethod<thread_pool_dot_rb.RUBY$block$\=\^\^$1(ThreadContext, Block, StaticScope, IRubyObject, IRubyObject[], Block)>}
+          Context obj jdk.vm.ci.hotspot.HotSpotCodeCacheProvider@51f3231d
+          Context obj DebugDumpScope[35004]
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1
+Document Length:        1635 bytes
+
+Concurrency Level:      4
+Time taken for tests:   37.080 seconds
+Complete requests:      10000
+Failed requests:        9997
+   (Connect: 0, Receive: 0, Length: 9997, Exceptions: 0)
+Non-2xx responses:      3
+Total transferred:      16324937 bytes
+HTML transferred:       9292118 bytes
+Requests per second:    269.69 [#/sec] (mean)
+Time per request:       14.832 [ms] (mean)
+Time per request:       3.708 [ms] (mean, across all concurrent requests)
+Transfer rate:          429.95 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     6   15  20.4     11     779
+Waiting:        6   14  19.8     10     774
+Total:          6   15  20.4     11     779
+
+Percentage of the requests served within a certain time (ms)
+  50%     11
+  66%     13
+  75%     16
+  80%     18
+  90%     24
+  95%     28
+  98%     35
+  99%     46
+ 100%    779 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Warning: adjusting CompilationFailureAction from Diagnose to Print after MaxCompilationProblemsPerAction (2) failed compilations
+Thread[JVMCI CompilerThread1,9,system]: Compilation of home.k0kubun.$_dot_rbenv.versions.jruby_minus_9_dot_2_dot_6_dot_0.lib.ruby.stdlib.monitor_dot_rb.RUBY$method$signal$0(ThreadContext, StaticScope, IRubyObject, Block, RubyModule, String) failed: org.graalvm.compiler.graph.GraalGraphError: Invalid frame state 108|FrameState@-3[AFTER_BCI]
+        at node: 1140|Read
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.raiseInvalidFrameStateError(HotSpotDebugInfoBuilder.java:122)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotDebugInfoBuilder.computeFrameForState(HotSpotDebugInfoBuilder.java:92)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.DebugInfoBuilder.build(DebugInfoBuilder.java:101)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateForWithExceptionEdge(NodeLIRBuilder.java:739)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.stateFor(NodeLIRBuilder.java:731)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.state(NodeLIRBuilder.java:720)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.nodes.memory.ReadNode.generate(ReadNode.java:79)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.emitNode(NodeLIRBuilder.java:464)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doRoot(NodeLIRBuilder.java:454)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(NodeLIRBuilder.java:371)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(LIRGenerationPhase.java:81)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:71)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.LIRGenerationPhase.run(LIRGenerationPhase.java:46)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:117)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.lir.phases.LIRPhase.apply(LIRPhase.java:109)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR0(GraalCompiler.java:340)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitLIR(GraalCompiler.java:304)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.emitBackEnd(GraalCompiler.java:284)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compile(GraalCompiler.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.GraalCompiler.compileGraph(GraalCompiler.java:165)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileHelper(HotSpotGraalCompiler.java:191)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compile(HotSpotGraalCompiler.java:204)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:181)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask$HotSpotCompilationWrapper.performCompilation(CompilationTask.java:98)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.core.CompilationWrapper.run(CompilationWrapper.java:169)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.CompilationTask.runCompilation(CompilationTask.java:330)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:144)
+        at jdk.internal.vm.compiler@11.0.2/org.graalvm.compiler.hotspot.HotSpotGraalCompiler.compileMethod(HotSpotGraalCompiler.java:111)
+        at jdk.internal.vm.ci/jdk.vm.ci.hotspot.HotSpotJVMCIRuntime.compileMethod(HotSpotJVMCIRuntime.java:524)
+To disable compilation failure notifications, set CompilationFailureAction to Silent (e.g., -Dgraal.CompilationFailureAction=Silent).
+To capture more information for diagnosing or reporting a compilation failure, set CompilationFailureAction to Diagnose or ExitVM (e.g., -Dgraal.CompilationFailureAction=Diagnose).
+
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1
+Document Length:        929 bytes
+
+Concurrency Level:      4
+Time taken for tests:   2.421 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      1632340 bytes
+HTML transferred:       929000 bytes
+Requests per second:    413.11 [#/sec] (mean)
+Time per request:       9.683 [ms] (mean)
+Time per request:       2.421 [ms] (mean, across all concurrent requests)
+Transfer rate:          658.53 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:     5   10   4.4      8      28
+Waiting:        5    9   4.2      7      28
+Total:          5   10   4.4      8      28
+
+Percentage of the requests served within a certain time (ms)
+  50%      8
+  66%      9
+  75%     12
+  80%     13
+  90%     16
+  95%     19
+  98%     22
+  99%     26
+ 100%     28 (longest request)
