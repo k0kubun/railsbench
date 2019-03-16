@@ -146,7 +146,7 @@ See [log/benchmark](./log/benchmark) for details.
 ## 50k Benchmark Results
 
 [JRuby claims to be faster than MRI when after 50k requests](https://speakerdeck.com/headius/jruby-2018-real-world-performance?slide=49).
-This part measures resulsts with following steps:
+This part measures results with following steps:
 
 * Restart puma
 * Run `ab -n 50000` as warmup
