@@ -15,6 +15,7 @@ rails g scaffold post title:string body:text published:boolean
 ## Setup
 
 Make sure config/database.yml works for your local PostgreSQL.
+Replace "k0kubun" with your $USER in the following instructions.
 
 ```bash
 sudo apt install postgresql
