@@ -1,6 +1,7 @@
 # railsbench
 
-Based on [headius/pgrailsbench](https://github.com/headius/pgrailsbench), but on Rails 5.2.
+Based on [headius/pgrailsbench](https://github.com/headius/pgrailsbench),
+but on Rails 5.2 and with database seeds.
 
 ## What's this?
 
@@ -27,13 +28,31 @@ sudo vi /etc/postgresql/10/main/pg_hba.conf
 sudo systemctl restart postgresql
 ```
 
-Create database and populate that.
+Populate database and assets for `RAILS_ENV=production`.
 
 ```bash
 bundle install
-rails db:create db:migrate db:seed
-RAILS_ENV=production rails db:create db:migrate db:seed
+bundle exec rake db:create db:migrate db:seed RAILS_ENV=production
+bundle exec rake assets:precompile RAILS_ENV=production
 ```
+
+## Run
+
+```bash
+# CRuby
+bundle exec puma -e production --workers=4 --threads=1 --preload
+
+# JRuby
+bundle exec puma -e production --threads=4
+```
+
+You can see posts on `localhost:3000/posts`.
+
+Assets are not shown properly with `-e production` but it's intentional because
+Rails assumes we delegate assets distribution to a reverse proxy on production by default.
+
+If you want to see the actual apprecation behavior, do the setup with `RAILS_ENV=development`
+and try `puma -e development`.
 
 ## License
 
