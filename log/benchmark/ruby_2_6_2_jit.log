@@ -1,5 +1,511 @@
 $ ruby -v --jit
 ruby 2.6.2p47 (2019-03-13 revision 67232) +JIT [x86_64-linux]
 
-$ RUBYOPT="--jit" bundle exec puma -e production --workers=4 --threads=1 --preload
++ RUBYOPT=--jit
++ bundle exec puma -e production --workers=4 --threads=1 --preload
+[18947] Puma starting in cluster mode...
+[18947] * Version 3.12.0 (ruby 2.6.2-p47), codename: Llamas in Pajamas
+[18947] * Min threads: 1, max threads: 1
+[18947] * Environment: production
+[18947] * Process workers: 4
+[18947] * Preloading application
+[18947] * Listening on tcp://0.0.0.0:3000
+[18947] ! WARNING: Detected 1 Thread(s) started in app boot:
+[18947] ! #<Thread:0x000055604b4d2ff0@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:299 sleep> - /home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:301:in `sleep'
+[18947] Use Ctrl-C to stop
+[18947] - Worker 0 (pid: 19025) booted, phase: 0
+[18947] - Worker 1 (pid: 19044) booted, phase: 0
+[18947] - Worker 2 (pid: 19069) booted, phase: 0
+[18947] - Worker 3 (pid: 19091) booted, phase: 0
++ ab -n 10000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   63.292 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      534224466 bytes
+HTML transferred:       527190000 bytes
+Requests per second:    158.00 [#/sec] (mean)
+Time per request:       25.317 [ms] (mean)
+Time per request:       6.329 [ms] (mean, across all concurrent requests)
+Transfer rate:          8242.84 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:    11   25   9.0     22     107
+Waiting:       11   25   8.9     22     107
+Total:         11   25   9.0     22     107
+
+Percentage of the requests served within a certain time (ms)
+  50%     22
+  66%     24
+  75%     28
+  80%     29
+  90%     35
+  95%     45
+  98%     54
+  99%     61
+ 100%    107 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   6.964 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      53422500 bytes
+HTML transferred:       52719000 bytes
+Requests per second:    143.60 [#/sec] (mean)
+Time per request:       27.856 [ms] (mean)
+Time per request:       6.964 [ms] (mean, across all concurrent requests)
+Transfer rate:          7491.52 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       7
+Processing:    13   28  10.3     23     101
+Waiting:       13   27  10.3     23     101
+Total:         13   28  10.4     23     101
+
+Percentage of the requests served within a certain time (ms)
+  50%     23
+  66%     27
+  75%     30
+  80%     31
+  90%     41
+  95%     51
+  98%     61
+  99%     70
+ 100%    101 (longest request)
++ ps aux
++ grep puma
++ head -n1
++ cut '-d ' -f3
++ xargs kill
+[18947] - Gracefully shutting down workers...
++ sleep 5
+/home/k0kubun/tmp/bench.sh: line 20: 18947 Terminated              RUBYOPT="--jit" bundle exec puma -e production --workers=4 --threads=1 --preload
++ for request_path in /posts /posts.json /posts/1 /posts/1.json
++ sleep 8
++ RUBYOPT=--jit
++ bundle exec puma -e production --workers=4 --threads=1 --preload
+[24484] Puma starting in cluster mode...
+[24484] * Version 3.12.0 (ruby 2.6.2-p47), codename: Llamas in Pajamas
+[24484] * Min threads: 1, max threads: 1
+[24484] * Environment: production
+[24484] * Process workers: 4
+[24484] * Preloading application
+[24484] * Listening on tcp://0.0.0.0:3000
+[24484] ! WARNING: Detected 1 Thread(s) started in app boot:
+[24484] ! #<Thread:0x000055a3fed83040@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:299 sleep> - /home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:301:in `sleep'
+[24484] Use Ctrl-C to stop
+[24484] - Worker 0 (pid: 24564) booted, phase: 0
+[24484] - Worker 1 (pid: 24570) booted, phase: 0
+[24484] - Worker 2 (pid: 24599) booted, phase: 0
+[24484] - Worker 3 (pid: 24621) booted, phase: 0
++ ab -n 10000 -c 4 localhost:3000/posts.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts.json
+Document Length:        39548 bytes
+
+Concurrency Level:      4
+Time taken for tests:   151.377 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      399970000 bytes
+HTML transferred:       395480000 bytes
+Requests per second:    66.06 [#/sec] (mean)
+Time per request:       60.551 [ms] (mean)
+Time per request:       15.138 [ms] (mean, across all concurrent requests)
+Transfer rate:          2580.29 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    22   60  21.4     54     187
+Waiting:       22   60  21.3     54     187
+Total:         22   61  21.4     54     187
+
+Percentage of the requests served within a certain time (ms)
+  50%     54
+  66%     60
+  75%     68
+  80%     73
+  90%     95
+  95%    106
+  98%    119
+  99%    130
+ 100%    187 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts.json
+Document Length:        39548 bytes
+
+Concurrency Level:      4
+Time taken for tests:   17.134 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      39997000 bytes
+HTML transferred:       39548000 bytes
+Requests per second:    58.36 [#/sec] (mean)
+Time per request:       68.535 [ms] (mean)
+Time per request:       17.134 [ms] (mean, across all concurrent requests)
+Transfer rate:          2279.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:    42   68  22.6     61     203
+Waiting:       42   68  22.5     60     202
+Total:         42   68  22.6     61     203
+
+Percentage of the requests served within a certain time (ms)
+  50%     61
+  66%     69
+  75%     76
+  80%     81
+  90%    106
+  95%    117
+  98%    131
+  99%    144
+ 100%    203 (longest request)
+
++ RUBYOPT=--jit
++ bundle exec puma -e production --workers=4 --threads=1 --preload
+[7020] Puma starting in cluster mode...
+[7020] * Version 3.12.0 (ruby 2.6.2-p47), codename: Llamas in Pajamas
+[7020] * Min threads: 1, max threads: 1
+[7020] * Environment: production
+[7020] * Process workers: 4
+[7020] * Preloading application
+[7020] * Listening on tcp://0.0.0.0:3000
+[7020] ! WARNING: Detected 1 Thread(s) started in app boot:
+[7020] ! #<Thread:0x0000561c322c0480@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:299 sleep> - /home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:301:in `sleep'
+[7020] Use Ctrl-C to stop
+[7020] - Worker 0 (pid: 7106) booted, phase: 0
+[7020] - Worker 1 (pid: 7125) booted, phase: 0
+[7020] - Worker 2 (pid: 7150) booted, phase: 0
+[7020] - Worker 3 (pid: 7163) booted, phase: 0
++ ab -n 10000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1
+Document Length:        929 bytes
+
+Concurrency Level:      4
+Time taken for tests:   11.473 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      16324460 bytes
+HTML transferred:       9290000 bytes
+Requests per second:    871.64 [#/sec] (mean)
+Time per request:       4.589 [ms] (mean)
+Time per request:       1.147 [ms] (mean, across all concurrent requests)
+Transfer rate:          1389.56 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     2    5   2.4      4      35
+Waiting:        2    4   2.3      4      34
+Total:          2    5   2.4      4      35
+
+Percentage of the requests served within a certain time (ms)
+  50%      4
+  66%      4
+  75%      4
+  80%      5
+  90%      7
+  95%      8
+  98%     13
+  99%     15
+ 100%     35 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1
+Document Length:        929 bytes
+
+Concurrency Level:      4
+Time taken for tests:   1.484 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      1632620 bytes
+HTML transferred:       929000 bytes
+Requests per second:    673.63 [#/sec] (mean)
+Time per request:       5.938 [ms] (mean)
+Time per request:       1.484 [ms] (mean, across all concurrent requests)
+Transfer rate:          1074.01 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     2    6   3.5      5      31
+Waiting:        2    6   3.4      4      31
+Total:          2    6   3.5      5      31
+
+Percentage of the requests served within a certain time (ms)
+  50%      5
+  66%      6
+  75%      7
+  80%      8
+  90%     10
+  95%     12
+  98%     17
+  99%     22
+ 100%     31 (longest request)
+
++ RUBYOPT=--jit
++ bundle exec puma -e production --workers=4 --threads=1 --preload
+[10169] Puma starting in cluster mode...
+[10169] * Version 3.12.0 (ruby 2.6.2-p47), codename: Llamas in Pajamas
+[10169] * Min threads: 1, max threads: 1
+[10169] * Environment: production
+[10169] * Process workers: 4
+[10169] * Preloading application
+[10169] * Listening on tcp://0.0.0.0:3000
+[10169] ! WARNING: Detected 1 Thread(s) started in app boot:
+[10169] ! #<Thread:0x0000564a7d07daf0@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:299 sleep> - /home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:301:in `sleep'
+[10169] Use Ctrl-C to stop
+[10169] - Worker 0 (pid: 10255) booted, phase: 0
+[10169] - Worker 1 (pid: 10274) booted, phase: 0
+[10169] - Worker 2 (pid: 10296) booted, phase: 0
+[10169] - Worker 3 (pid: 10318) booted, phase: 0
++ ab -n 10000 -c 4 localhost:3000/posts/1.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1.json
+Document Length:        279 bytes
+
+Concurrency Level:      4
+Time taken for tests:   11.555 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      7280000 bytes
+HTML transferred:       2790000 bytes
+Requests per second:    865.45 [#/sec] (mean)
+Time per request:       4.622 [ms] (mean)
+Time per request:       1.155 [ms] (mean, across all concurrent requests)
+Transfer rate:          615.28 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     2    5   2.5      4      34
+Waiting:        2    4   2.4      4      34
+Total:          2    5   2.5      4      34
+
+Percentage of the requests served within a certain time (ms)
+  50%      4
+  66%      4
+  75%      5
+  80%      5
+  90%      7
+  95%      9
+  98%     13
+  99%     15
+ 100%     34 (longest request)
++ ab -n 1000 -c 4 localhost:3000/posts/1.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1.json
+Document Length:        279 bytes
+
+Concurrency Level:      4
+Time taken for tests:   1.465 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      728000 bytes
+HTML transferred:       279000 bytes
+Requests per second:    682.67 [#/sec] (mean)
+Time per request:       5.859 [ms] (mean)
+Time per request:       1.465 [ms] (mean, across all concurrent requests)
+Transfer rate:          485.34 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     2    6   3.5      4      29
+Waiting:        2    5   3.4      4      29
+Total:          2    6   3.5      4      29
+
+Percentage of the requests served within a certain time (ms)
+  50%      4
+  66%      6
+  75%      7
+  80%      7
+  90%      9
+  95%     13
+  98%     17
+  99%     21
+ 100%     29 (longest request)
