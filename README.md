@@ -54,6 +54,24 @@ Rails assumes we delegate assets distribution to a reverse proxy on production b
 If you want to see the actual apprecation behavior, do the setup with `RAILS_ENV=development`
 and try `puma -e development`.
 
+## Benchmark
+
+Install Apache Bench with `sudo apt install apache2-utils`. Then:
+
+```bash
+# HTML posts#index
+ab -c 4 -n 10000 localhost:3000/posts
+
+# JSON posts#index
+ab -c 4 -n 10000 localhost:3000/posts.json
+
+# HTML posts#show
+ab -c 4 -n 10000 localhost:3000/posts/1
+
+# JSON posts#show
+ab -c 4 -n 10000 localhost:3000/posts/1.json
+```
+
 ## License
 
 MIT License
