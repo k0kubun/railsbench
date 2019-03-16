@@ -152,7 +152,7 @@ This part measures resulsts with following steps:
 * Run `ab -n 50000` as warmup
 * Run `ab -n 10000` as benchmark
 
-See [log/benchmark\_50k](./log/benchmark) for details.
+See [log/benchmark\_50k](./log/benchmark_50k) for details.
 
 ### GET /posts
 
