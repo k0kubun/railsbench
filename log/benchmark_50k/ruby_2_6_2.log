@@ -1,0 +1,112 @@
+$ ruby -v
+ruby 2.6.2p47 (2019-03-13 revision 67232) [x86_64-linux]
+
+$ bundle exec puma -e production --workers=4 --threads=1 --preload
+
+$ ab -n 50000 -c 4 localhost:3000/posts && ab -n 10000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 5000 requests
+Completed 10000 requests
+Completed 15000 requests
+Completed 20000 requests
+Completed 25000 requests
+Completed 30000 requests
+Completed 35000 requests
+Completed 40000 requests
+Completed 45000 requests
+Completed 50000 requests
+Finished 50000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   167.865 seconds
+Complete requests:      50000
+Failed requests:        0
+Total transferred:      2671120950 bytes
+HTML transferred:       2635950000 bytes
+Requests per second:    297.86 [#/sec] (mean)
+Time per request:       13.429 [ms] (mean)
+Time per request:       3.357 [ms] (mean, across all concurrent requests)
+Transfer rate:          15539.33 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    10   13   4.5     11      98
+Waiting:       10   13   4.5     11      97
+Total:         10   13   4.5     11      98
+
+Percentage of the requests served within a certain time (ms)
+  50%     11
+  66%     12
+  75%     15
+  80%     16
+  90%     18
+  95%     23
+  98%     28
+  99%     31
+ 100%     98 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        52719 bytes
+
+Concurrency Level:      4
+Time taken for tests:   33.786 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      534225328 bytes
+HTML transferred:       527190000 bytes
+Requests per second:    295.98 [#/sec] (mean)
+Time per request:       13.514 [ms] (mean)
+Time per request:       3.379 [ms] (mean, across all concurrent requests)
+Transfer rate:          15441.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:    10   13   4.6     11      62
+Waiting:       10   13   4.6     11      62
+Total:         10   13   4.6     11      62
+
+Percentage of the requests served within a certain time (ms)
+  50%     11
+  66%     12
+  75%     15
+  80%     16
+  90%     18
+  95%     23
+  98%     28
+  99%     33
+ 100%     62 (longest request)

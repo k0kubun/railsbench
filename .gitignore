@@ -9,7 +9,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-!/log/benchmark
+!/log/benchmark*
 /tmp/*
 !/log/.keep
 !/tmp/.keep

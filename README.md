@@ -89,7 +89,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts
 
-|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 11 | 23 | 18 | 13 | 22 |
 | 66%  | 15 | 27 | 21 | 18 | 22 |
@@ -103,7 +103,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts.json
 
-|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 27 | 61 | 31 | 21 | 53 |
 | 66%  | 29 | 69 | 32 | 23 | 58 |
@@ -117,7 +117,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1
 
-|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 3 |  5 |  8 |  7 | 8 |
 | 66%  | 4 |  6 |  9 |  8 | 9 |
@@ -131,7 +131,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1.json
 
-|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 indy Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 3 |  4 |  8 |  7 |  6 |
 | 66%  | 3 |  6 |  9 |  7 |  7 |
@@ -142,6 +142,39 @@ See [log/benchmark](./log/benchmark) for details.
 | 98%  | 6 | 17 | 19 | 13 | 10 |
 | 99%  |11 | 21 | 19 | 16 | 12 |
 |100%  |29 | 29 | 28 | 20 | 15 |
+
+## 50k Benchmark Results
+
+[JRuby claims to be faster than MRI when after 50k requests](https://speakerdeck.com/headius/jruby-2018-real-world-performance?slide=49).
+This part measures resulsts with following steps:
+
+* Restart puma
+* Run `ab -n 50000` as warmup
+* Run `ab -n 10000` as benchmark
+
+See [log/benchmark\_50k](./log/benchmark) for details.
+
+### GET /posts
+
+The following table is showing response time milliseconds for each %ile in the last 10,000 requests.
+
+|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:-------------------|
+| 50%  | 11 | 11 |
+| 66%  | 12 | 11 |
+| 75%  | 15 | 11 |
+| 80%  | 16 | 13 |
+| 90%  | 18 | 17 |
+| 95%  | 23 | 18 |
+| 98%  | 28 | 18 |
+| 99%  | 33 | 20 |
+|100%  | 62 | 27 |
+
+The following table is showing # of requests per second (mean).
+
+|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:-------------------|
+| #/s  | 295.98 | 327.68 |
 
 ## License
 
