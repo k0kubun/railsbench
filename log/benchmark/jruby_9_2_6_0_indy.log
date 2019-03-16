@@ -137,37 +137,36 @@ Server Hostname:        localhost
 Server Port:            3000
 
 Document Path:          /posts/1
-Document Length:        1722 bytes
+Document Length:        929 bytes
 
 Concurrency Level:      4
-Time taken for tests:   23.129 seconds
+Time taken for tests:   35.248 seconds
 Complete requests:      10000
 Failed requests:        0
-Non-2xx responses:      10000
-Total transferred:      18830000 bytes
-HTML transferred:       17220000 bytes
-Requests per second:    432.35 [#/sec] (mean)
-Time per request:       9.252 [ms] (mean)
-Time per request:       2.313 [ms] (mean, across all concurrent requests)
-Transfer rate:          795.04 [Kbytes/sec] received
+Total transferred:      16323874 bytes
+HTML transferred:       9290000 bytes
+Requests per second:    283.71 [#/sec] (mean)
+Time per request:       14.099 [ms] (mean)
+Time per request:       3.525 [ms] (mean, across all concurrent requests)
+Transfer rate:          452.26 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
 Connect:        0    0   0.0      0       0
-Processing:     3    9  18.5      7     652
-Waiting:        3    9  18.3      7     646
-Total:          3    9  18.5      7     652
+Processing:     4   14  79.0      9    3745
+Waiting:        4   13  78.6      9    3737
+Total:          4   14  79.0      9    3745
 
 Percentage of the requests served within a certain time (ms)
-  50%      7
-  66%      8
-  75%      9
-  80%     10
-  90%     13
-  95%     15
-  98%     21
-  99%     32
- 100%    652 (longest request)
+  50%      9
+  66%     11
+  75%     13
+  80%     14
+  90%     19
+  95%     23
+  98%     28
+  99%     39
+ 100%   3745 (longest request)
 
 $ ab -n 10000 -c 4 localhost:3000/posts/1.json
 This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
@@ -193,34 +192,33 @@ Server Hostname:        localhost
 Server Port:            3000
 
 Document Path:          /posts/1.json
-Document Length:        34 bytes
+Document Length:        279 bytes
 
 Concurrency Level:      4
-Time taken for tests:   23.158 seconds
+Time taken for tests:   31.334 seconds
 Complete requests:      10000
 Failed requests:        0
-Non-2xx responses:      10000
-Total transferred:      2000000 bytes
-HTML transferred:       340000 bytes
-Requests per second:    431.82 [#/sec] (mean)
-Time per request:       9.263 [ms] (mean)
-Time per request:       2.316 [ms] (mean, across all concurrent requests)
-Transfer rate:          84.34 [Kbytes/sec] received
+Total transferred:      7280000 bytes
+HTML transferred:       2790000 bytes
+Requests per second:    319.14 [#/sec] (mean)
+Time per request:       12.534 [ms] (mean)
+Time per request:       3.133 [ms] (mean, across all concurrent requests)
+Transfer rate:          226.89 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.0      0       0
-Processing:     3    9  18.3      7     561
-Waiting:        3    9  18.0      6     557
-Total:          3    9  18.3      7     561
+Connect:        0    0   0.0      0       1
+Processing:     5   12  23.9      9     767
+Waiting:        4   12  23.4      9     766
+Total:          5   13  23.9      9     767
 
 Percentage of the requests served within a certain time (ms)
-  50%      7
-  66%      8
-  75%     10
-  80%     11
-  90%     13
-  95%     14
-  98%     18
-  99%     30
- 100%    561 (longest request)
+  50%      9
+  66%     11
+  75%     13
+  80%     15
+  90%     18
+  95%     22
+  98%     28
+  99%     42
+ 100%    767 (longest request)
