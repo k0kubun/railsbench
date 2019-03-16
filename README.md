@@ -31,6 +31,7 @@ sudo systemctl restart postgresql
 Populate database and assets for `RAILS_ENV=production`.
 
 ```bash
+gem install bundler -v 1.17.2
 bundle install
 bundle exec rake db:create db:migrate db:seed RAILS_ENV=production
 bundle exec rake assets:precompile RAILS_ENV=production
