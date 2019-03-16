@@ -108,3 +108,5 @@ Percentage of the requests served within a certain time (ms)
   98%     18
   99%     20
  100%     27 (longest request)
+
+# restart puma here

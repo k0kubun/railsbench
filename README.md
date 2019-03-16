@@ -176,6 +176,28 @@ The following table is showing # of requests per second (mean).
 |:-----|:-----------|:-------------------|
 | #/s  | 295.98 | 327.68 |
 
+### GET /posts/1
+
+The following table is showing response time milliseconds for each %ile in the last 10,000 requests.
+
+|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:-------------------|
+| 50%  |  2 |  3 |
+| 66%  |  2 |  3 |
+| 75%  |  3 |  3 |
+| 80%  |  3 |  3 |
+| 90%  |  3 |  3 |
+| 95%  |  3 |  3 |
+| 98%  |  6 |  5 |
+| 99%  | 10 |  6 |
+|100%  | 54 | 14 |
+
+The following table is showing # of requests per second (mean).
+
+|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:-------------------|
+| #/s  | 1653.11 | 1377.71 |
+
 ## License
 
 MIT License
