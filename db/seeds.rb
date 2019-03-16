@@ -108,8 +108,8 @@ posts = [
 puts "Deleted all #{Post.delete_all} posts"
 
 print "Creating #{posts.size} posts"
-posts.each do |post|
-  Post.create(post)
+posts.each_with_index do |post, i|
+  Post.create(post.merge(id: i + 1))
   print "."
 end
 puts
