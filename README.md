@@ -89,7 +89,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
+|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 11 | 23 | 18 | 13 | 22 |
 | 66%  | 15 | 27 | 21 | 18 | 22 |
@@ -103,7 +103,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts.json
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
+|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 27 | 61 | 31 | 21 | 53 |
 | 66%  | 29 | 69 | 32 | 23 | 58 |
@@ -117,7 +117,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
+|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 3 |  5 |  8 |  7 | 8 |
 | 66%  | 4 |  6 |  9 |  8 | 9 |
@@ -131,7 +131,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1.json
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
+|      | ruby 2.6.2 | ruby 2.6.2 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | JRuby 9.2.6.0 Graal |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:--------------------|
 | 50%  | 3 |  4 |  8 |  7 |  6 |
 | 66%  | 3 |  6 |  9 |  7 |  7 |
