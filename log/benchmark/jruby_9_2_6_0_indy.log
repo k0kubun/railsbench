@@ -1,0 +1,226 @@
+$ ruby -v -Xcompile.invokedynamic=true
+jruby 9.2.6.0 (2.5.3) 2019-02-11 15ba00b Java HotSpot(TM) 64-Bit Server VM 25.181-b13 on 1.8.0_181-b13 +indy +jit [linux-x86_64]
+
+$ JRUBY_OPTS="-Xcompile.invokedynamic=true" bundle exec puma -e production --threads=4
+
+$ ab -n 10000 -c 4 localhost:3000/posts
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts
+Document Length:        53043 bytes
+
+Concurrency Level:      4
+Time taken for tests:   58.779 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      537464790 bytes
+HTML transferred:       530430000 bytes
+Requests per second:    170.13 [#/sec] (mean)
+Time per request:       23.512 [ms] (mean)
+Time per request:       5.878 [ms] (mean, across all concurrent requests)
+Transfer rate:          8929.53 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     9   23  67.3     18    2153
+Waiting:        9   23  66.3     17    2100
+Total:          9   23  67.3     18    2153
+
+Percentage of the requests served within a certain time (ms)
+  50%     18
+  66%     21
+  75%     24
+  80%     25
+  90%     30
+  95%     33
+  98%     41
+  99%     62
+ 100%   2153 (longest request)
+
+$ ab -n 10000 -c 4 localhost:3000/posts.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts.json
+Document Length:        39764 bytes
+
+Concurrency Level:      4
+Time taken for tests:   77.436 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      402130000 bytes
+HTML transferred:       397640000 bytes
+Requests per second:    129.14 [#/sec] (mean)
+Time per request:       30.974 [ms] (mean)
+Time per request:       7.744 [ms] (mean, across all concurrent requests)
+Transfer rate:          5071.35 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:    17   31  71.7     25    2356
+Waiting:       17   30  70.8     24    2345
+Total:         17   31  71.7     25    2356
+
+Percentage of the requests served within a certain time (ms)
+  50%     25
+  66%     27
+  75%     30
+  80%     32
+  90%     36
+  95%     40
+  98%     53
+  99%    154
+ 100%   2356 (longest request)
+
+$ ab -n 10000 -c 4 localhost:3000/posts/1
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1
+Document Length:        1722 bytes
+
+Concurrency Level:      4
+Time taken for tests:   23.129 seconds
+Complete requests:      10000
+Failed requests:        0
+Non-2xx responses:      10000
+Total transferred:      18830000 bytes
+HTML transferred:       17220000 bytes
+Requests per second:    432.35 [#/sec] (mean)
+Time per request:       9.252 [ms] (mean)
+Time per request:       2.313 [ms] (mean, across all concurrent requests)
+Transfer rate:          795.04 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     3    9  18.5      7     652
+Waiting:        3    9  18.3      7     646
+Total:          3    9  18.5      7     652
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      8
+  75%      9
+  80%     10
+  90%     13
+  95%     15
+  98%     21
+  99%     32
+ 100%    652 (longest request)
+
+$ ab -n 10000 -c 4 localhost:3000/posts/1.json
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /posts/1.json
+Document Length:        34 bytes
+
+Concurrency Level:      4
+Time taken for tests:   23.158 seconds
+Complete requests:      10000
+Failed requests:        0
+Non-2xx responses:      10000
+Total transferred:      2000000 bytes
+HTML transferred:       340000 bytes
+Requests per second:    431.82 [#/sec] (mean)
+Time per request:       9.263 [ms] (mean)
+Time per request:       2.316 [ms] (mean, across all concurrent requests)
+Transfer rate:          84.34 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     3    9  18.3      7     561
+Waiting:        3    9  18.0      6     557
+Total:          3    9  18.3      7     561
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      8
+  75%     10
+  80%     11
+  90%     13
+  95%     14
+  98%     18
+  99%     30
+ 100%    561 (longest request)

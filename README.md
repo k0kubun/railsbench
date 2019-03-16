@@ -40,7 +40,7 @@ bundle exec rake assets:precompile RAILS_ENV=production
 ## Run
 
 ```bash
-# CRuby
+# MRI
 bundle exec puma -e production --workers=4 --threads=1 --preload
 
 # JRuby, TruffleRuby
@@ -72,6 +72,72 @@ ab -c 4 -n 10000 localhost:3000/posts/1
 # JSON posts#show
 ab -c 4 -n 10000 localhost:3000/posts/1.json
 ```
+
+## Benchmark Results
+
+Here is the benchmark result on: Intel 4.0GHz i7-4790K, 16GB memory, x86-64 Ubuntu 8 Cores
+
+I restarted a server for each measurement, and started `ab` as soon as possible
+once I saw puma started to listen to :3000 in puma's log.
+
+Following tables are showing response time milliseconds for each %ile in 10,000 requests.
+See [log/benchmark](./log/benchmark) for details.
+
+### GET /posts
+
+| %ile | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
+| 50   | 11 | 22 |  20 |  18 |  23 |
+| 66   | 14 | 25 |  25 |  21 |  30 |
+| 75   | 16 | 28 |  27 |  24 |  39 |
+| 80   | 17 | 30 |  28 |  25 |  50 |
+| 90   | 18 | 38 |  32 |  30 | 110 |
+| 95   | 24 | 52 |  36 |  33 | 139 |
+| 98   | 28 | 62 |  53 |  41 | 187 |
+| 99   | 34 | 67 |  66 |  62 | 271 |
+|100   | 85 |121 |1431 |2153 |3662 |
+
+### GET /posts.json
+
+| %ile | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
+| 50   | 23 | 53 |  31 |  25 |N/A |
+| 66   | 29 | 60 |  33 |  27 |N/A |
+| 75   | 29 | 68 |  38 |  30 |N/A |
+| 80   | 30 | 72 |  41 |  32 |N/A |
+| 90   | 36 | 93 |  45 |  36 |N/A |
+| 95   | 47 |105 |  52 |  40 |N/A |
+| 98   | 62 |121 |  87 |  53 |N/A |
+| 99   | 69 |131 | 106 | 154 |N/A |
+|100   |159 |197 |1548 |2356 |N/A |
+
+### GET /posts/1
+
+| %ile | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
+| 50   |  2 |  3 |   6 |   7 |N/A |
+| 66   |  2 |  3 |   7 |   8 |N/A |
+| 75   |  2 |  4 |   8 |   9 |N/A |
+| 80   |  2 |  4 |   9 |  10 |N/A |
+| 90   |  2 |  6 |  11 |  13 |N/A |
+| 95   |  3 |  7 |  13 |  15 |N/A |
+| 98   |  4 | 11 |  22 |  21 |N/A |
+| 99   |  9 | 14 |  28 |  32 |N/A |
+|100   | 33 | 32 | 538 | 652 |N/A |
+
+### GET /posts/1.json
+
+| %ile | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
+| 50   |  2 |  3 |   7 |   7 |N/A |
+| 66   |  2 |  3 |   8 |   8 |N/A |
+| 75   |  2 |  4 |   9 |  10 |N/A |
+| 80   |  2 |  4 |  10 |  11 |N/A |
+| 90   |  2 |  6 |  12 |  13 |N/A |
+| 95   |  3 |  7 |  14 |  14 |N/A |
+| 98   |  4 | 12 |  21 |  18 |N/A |
+| 99   |  8 | 14 |  26 |  30 |N/A |
+|100   | 44 | 31 | 526 | 561 |N/A |
 
 ## License
 
