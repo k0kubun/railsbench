@@ -43,7 +43,7 @@ bundle exec rake assets:precompile RAILS_ENV=production
 # CRuby
 bundle exec puma -e production --workers=4 --threads=1 --preload
 
-# JRuby
+# JRuby, TruffleRuby
 bundle exec puma -e production --threads=4
 ```
 
