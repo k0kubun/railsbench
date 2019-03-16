@@ -85,7 +85,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby 1.0.0-rc13 |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
 | 50%  | 11 | 22 |  20 |  18 |  23 |
 | 66%  | 14 | 25 |  25 |  21 |  30 |
@@ -99,7 +99,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts.json
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby 1.0.0-rc13 |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
 | 50%  | 23 | 53 |  31 |  25 |N/A |
 | 66%  | 29 | 60 |  33 |  27 |N/A |
@@ -113,7 +113,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby 1.0.0-rc13 |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
 | 50%  |  2 |  3 |   6 |   7 |N/A |
 | 66%  |  2 |  3 |   7 |   8 |N/A |
@@ -127,7 +127,7 @@ See [log/benchmark](./log/benchmark) for details.
 
 ### GET /posts/1.json
 
-|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby |
+|      | ruby 2.6.2 | ruby 2.6.6 JIT | JRuby 9.2.6.0 | JRuby 9.2.6.0 indy | TruffleRuby 1.0.0-rc13 |
 |:-----|:-----------|:---------------|:--------------|:-------------------|:------------|
 | 50%  |  2 |  3 |   7 |   7 |N/A |
 | 66%  |  2 |  3 |   8 |   8 |N/A |
