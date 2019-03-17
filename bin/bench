@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 # Usage:
-#   WARMUP=0 BENCH=10000 bin/bench /posts/1.json
+#   WARMUP=0 BENCHMARK=10000 bin/bench
 
 ENV['RAILS_ENV'] ||= 'production'
 require_relative '../config/boot'
@@ -12,13 +12,66 @@ class Bench
   def initialize(warmup:, benchmark:, path:)
     @warmup = warmup
     @benchmark = benchmark
-    @benchmark = path
+    @env = Rack::MockRequest.env_for(path, method: Rack::GET)
+  end
+
+  def measure
+    app = Rails.application
+    env = @env
+    clock = Process::CLOCK_MONOTONIC
+
+    i = 0
+    while i < @warmup
+      app.call(env)
+      i += 1
+      print "\rWarmup: #{i}/#{@warmup}"
+    end
+    puts "\rWarmup: #{@warmup} requests" if i > 0
+
+    durations = []
+    i = 0
+    while i < @benchmark
+      started_at = Process.clock_gettime(clock)
+      app.call(env)
+      durations << Process.clock_gettime(clock) - started_at
+
+      i += 1
+      print "\rBenchmark: #{i}/#{@benchmark}"
+    end
+    puts "\rBenchmark: #{@benchmark} requests"
+    puts
+    puts "Request per second: #{'%.1f' % (@benchmark / durations.inject(&:+))} [#/s] (mean)"
+    puts
+    puts "Percentage of the requests served within a certain time (ms)"
+    show_percentiles(durations)
+  end
+
+  private
+
+  def show_percentiles(durations)
+    percentiles = [50, 66, 75, 80, 90, 95, 98, 99, 100]
+    results = {}
+
+    durations.sort.each_with_index do |duration, index|
+      percentile = (index / durations.size.to_f) * 100
+      matched, percentiles = percentiles.partition { |threshold| percentile >= threshold }
+
+      matched.each do |match|
+        results[match] = duration
+      end
+      break if percentiles.empty?
+    end
+    results[100] = durations.max
+
+    results.each do |percentile, duration|
+      puts " #{"%3d" % percentile}% #{"%7.2f" % (duration * 1000)}"
+    end
   end
 end
 
 bench = Bench.new(
   warmup: Integer(ENV.fetch('WARMUP', 0)),
-  benchmark: Integer(ENV.fetch('BENCH', 10000)),
-  path: ARGV.first || '/posts',
+  benchmark: Integer(ENV.fetch('BENCHMARK', 10000)),
+  path: ARGV.first || '/posts/1',
 )
-bench.percentile
+bench.measure
