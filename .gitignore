@@ -28,3 +28,5 @@
 /config/master.key
 
 /stackprof-*.dump
+/perf.data
+/perf.data.old
