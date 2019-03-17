@@ -324,612 +324,157 @@ $ stackprof stackprof-2019-03-17_12:17:46_+0900.dump
 ```
 
 ```
-$ RUBYOPT="--jit-verbose=1" PROFILE=wall INTERVAL=100 WARMUP=50000 BENCHMARK=10000 bin/bench
-JIT success (116.5ms): canonical_segments@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/rubygems/version.rb:369 -> /tmp/_ruby_mjit_p17183u42.c
-JIT success (45.6ms): block in remove_unresolved_default_spec@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/rubygems.rb:1284 -> /tmp/_ruby_mjit_p17183u105.c
-JIT success (94.7ms): block (2 levels) in initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/loaded_features_index.rb:36 -> /tmp/_ruby_mjit_p17183u579.c
-JIT success (125.4ms): _segments@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/rubygems/version.rb:382 -> /tmp/_ruby_mjit_p17183u27.c
-JIT success (91.3ms): block in tsort_each_child@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:50 -> /tmp/_ruby_mjit_p17183u918.c
-Warmup: 20/50000JIT success (31.0ms): before@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:19 -> /tmp/_ruby_mjit_p17183u919.c
-Warmup: 47/50000JIT success (31.6ms): after@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:23 -> /tmp/_ruby_mjit_p17183u920.c
-Warmup: 205/50000JIT success (203.6ms): ==@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/rubygems/dependency.rb:173 -> /tmp/_ruby_mjit_p17183u270.c
-Warmup: 233/50000JIT success (32.5ms): get_header@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:52 -> /tmp/_ruby_mjit_p17183u1661.c
-Warmup: 256/50000JIT success (31.3ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/concurrent-ruby-1.1.5/lib/concurrent/collection/map/non_concurrent_map_backend.rb:19 -> /tmp/_ruby_mjit_p17183u656.c
-Warmup: 937/50000JIT success (831.3ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/concurrent-ruby-1.1.5/lib/concurrent/map.rb:132 -> /tmp/_ruby_mjit_p17183u655.c
-Warmup: 960/50000JIT success (31.5ms): include?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/set.rb:253 -> /tmp/_ruby_mjit_p17183u315.c
-Warmup: 1053/50000JIT success (113.1ms): instance@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/per_thread_registry.rb:46 -> /tmp/_ruby_mjit_p17183u1662.c
-Warmup: 1083/50000JIT success (35.9ms): block in initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/ordered_options.rb:73 -> /tmp/_ruby_mjit_p17183u1162.c
-Warmup: 1126/50000JIT success (49.9ms): block in xor_byte_strings@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/request_forgery_protection.rb:405 -> /tmp/_ruby_mjit_p17183u1963.c
-Warmup: 1140/50000JIT success (21.7ms): block (4 levels) in class_attribute@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/class/attribute.rb:106 -> /tmp/_ruby_mjit_p17183u744.c
-Warmup: 1176/50000JIT success (48.6ms): html_safe?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:210 -> /tmp/_ruby_mjit_p17183u1941.c
-Warmup: 1284/50000JIT success (138.1ms): mon_check_owner@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:267 -> /tmp/_ruby_mjit_p17183u104.c
-Warmup: 1345/50000JIT success (97.8ms): mon_exit@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:199 -> /tmp/_ruby_mjit_p17183u103.c
-Warmup: 1602/50000JIT success (333.8ms): mon_synchronize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:227 -> /tmp/_ruby_mjit_p17183u1184.c
-Warmup: 1737/50000JIT success (172.3ms): mon_enter@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:187 -> /tmp/_ruby_mjit_p17183u101.c
-Warmup: 1806/50000JIT success (84.2ms): convert_key@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:349 -> /tmp/_ruby_mjit_p17183u1678.c
-Warmup: 1819/50000JIT success (21.1ms): html_safe?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:123 -> /tmp/_ruby_mjit_p17183u1947.c
-Warmup: 1867/50000JIT success (69.3ms): block (2 levels) in class_attribute@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/class/attribute.rb:124 -> /tmp/_ruby_mjit_p17183u1810.c
-Warmup: 1896/50000JIT success (42.0ms): block in symbolize_keys!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/keys.rb:64 -> /tmp/_ruby_mjit_p17183u1990.c
-Warmup: 1953/50000JIT success (114.0ms): block in forwarded_scheme@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:489 -> /tmp/_ruby_mjit_p17183u1967.c
-Warmup: 2562/50000JIT success (777.3ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:172 -> /tmp/_ruby_mjit_p17183u1955.c
-Warmup: 2697/50000JIT success (174.5ms): unwrapped_html_escape@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:34 -> /tmp/_ruby_mjit_p17183u1957.c
-Warmup: 2790/50000JIT success (125.0ms): tidy_bytes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/multibyte/unicode.rb:226 -> /tmp/_ruby_mjit_p17183u1958.c
-Warmup: 2911/50000JIT success (172.9ms): connection_specification_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_handling.rb:96 -> /tmp/_ruby_mjit_p17183u1812.c
-Warmup: 2940/50000JIT success (42.1ms): block in view_assigns@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/abstract_controller/rendering.rb:68 -> /tmp/_ruby_mjit_p17183u1914.c
-Warmup: 2977/50000JIT success (46.4ms): present?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:26 -> /tmp/_ruby_mjit_p17183u1434.c
+$ RUBYOPT="--jit-verbose=1 -v" PROFILE=wall INTERVAL=100 WARMUP=50000 BENCHMARK=10000 bin/bench
+ruby 2.7.0dev (2019-03-17 trunk 67281) +JIT [x86_64-linux]
+JIT success (41.6ms): block in remove_unresolved_default_spec@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/rubygems.rb:1292 -> /tmp/_ruby_mjit_p5340u0.c
+/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/bootsnap-1.4.1/lib/bootsnap/compile_cache/yaml.rb:48: warning: method redefined; discarding old load_file
+/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/psych.rb:576: warning: previous definition of load_file was here
+JIT success (111.1ms): canonical_segments@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/rubygems/version.rb:370 -> /tmp/_ruby_mjit_p5340u1.c
+JIT success (109.1ms): _segments@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/rubygems/version.rb:383 -> /tmp/_ruby_mjit_p5340u5.c
+JIT success (83.3ms): block (2 levels) in initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/bootsnap-1.4.1/lib/bootsnap/load_path_cache/loaded_features_index.rb:36 -> /tmp/_ruby_mjit_p5340u6.c
+JIT success (87.1ms): block in tsort_each_child@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:50 -> /tmp/_ruby_mjit_p5340u7.c
+JIT success (28.1ms): before@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:19 -> /tmp/_ruby_mjit_p5340u8.c
+/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activerecord-5.2.2.1/lib/active_record/statement_cache.rb:90: warning: tried to create Proc object without a block
+JIT success (33.1ms): after@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/railties-5.2.2.1/lib/rails/initializable.rb:23 -> /tmp/_ruby_mjit_p5340u9.c
+Warmup: 120/50000JIT success (146.3ms): ==@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/rubygems/dependency.rb:173 -> /tmp/_ruby_mjit_p5340u2.c
+Warmup: 214/50000JIT success (109.4ms): ==@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/bundler/dep_proxy.rb:16 -> /tmp/_ruby_mjit_p5340u3.c
+Warmup: 240/50000JIT success (32.1ms): get_header@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:52 -> /tmp/_ruby_mjit_p5340u10.c
+Warmup: 266/50000JIT success (32.5ms): []@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/concurrent-ruby-1.1.5/lib/concurrent/collection/map/non_concurrent_map_backend.rb:19 -> /tmp/_ruby_mjit_p5340u11.c
+Warmup: 1027/50000JIT success (888.4ms): []@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/concurrent-ruby-1.1.5/lib/concurrent/map.rb:132 -> /tmp/_ruby_mjit_p5340u12.c
+Warmup: 1049/50000JIT success (32.0ms): include?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/set.rb:253 -> /tmp/_ruby_mjit_p5340u13.c
+Warmup: 1144/50000JIT success (108.0ms): instance@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/per_thread_registry.rb:46 -> /tmp/_ruby_mjit_p5340u14.c
+Warmup: 1176/50000JIT success (50.5ms): block in initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/ordered_options.rb:73 -> /tmp/_ruby_mjit_p5340u15.c
+Warmup: 1213/50000JIT success (54.0ms): block in xor_byte_strings@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/request_forgery_protection.rb:405 -> /tmp/_ruby_mjit_p5340u17.c
+Warmup: 1228/50000JIT success (29.3ms): block (4 levels) in class_attribute@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/class/attribute.rb:106 -> /tmp/_ruby_mjit_p5340u16.c
+Warmup: 1271/50000JIT success (70.4ms): html_safe?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:210 -> /tmp/_ruby_mjit_p5340u18.c
+Warmup: 1380/50000JIT success (141.3ms): mon_check_owner@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/monitor.rb:267 -> /tmp/_ruby_mjit_p5340u19.c
+Warmup: 1443/50000JIT success (95.2ms): mon_exit@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/monitor.rb:199 -> /tmp/_ruby_mjit_p5340u20.c
+Warmup: 1692/50000JIT success (320.0ms): mon_synchronize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/monitor.rb:227 -> /tmp/_ruby_mjit_p5340u21.c
+Warmup: 1816/50000JIT success (152.4ms): mon_enter@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/monitor.rb:187 -> /tmp/_ruby_mjit_p5340u22.c
+Warmup: 1882/50000JIT success (86.3ms): convert_key@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:349 -> /tmp/_ruby_mjit_p5340u23.c
+Warmup: 1901/50000JIT success (25.6ms): html_safe?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:123 -> /tmp/_ruby_mjit_p5340u24.c
+Warmup: 1939/50000JIT success (80.4ms): block (2 levels) in class_attribute@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/class/attribute.rb:124 -> /tmp/_ruby_mjit_p5340u25.c
+Warmup: 1974/50000JIT success (43.5ms): block in symbolize_keys!@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/keys.rb:64 -> /tmp/_ruby_mjit_p5340u26.c
+Warmup: 2049/50000JIT success (115.5ms): block in forwarded_scheme@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:489 -> /tmp/_ruby_mjit_p5340u27.c
+Warmup: 2173/50000JIT success (192.7ms): unwrapped_html_escape@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:34 -> /tmp/_ruby_mjit_p5340u28.c
+Warmup: 2261/50000JIT success (115.1ms): tidy_bytes@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/multibyte/unicode.rb:226 -> /tmp/_ruby_mjit_p5340u29.c
+Warmup: 2907/50000JIT success (785.2ms): initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:172 -> /tmp/_ruby_mjit_p5340u30.c
+Warmup: 3036/50000JIT success (151.1ms): connection_specification_name@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activerecord-5.2.2.1/lib/active_record/connection_handling.rb:96 -> /tmp/_ruby_mjit_p5340u31.c
+Warmup: 3063/50000JIT success (40.4ms): block in view_assigns@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/abstract_controller/rendering.rb:68 -> /tmp/_ruby_mjit_p5340u32.c
+Warmup: 3097/50000JIT success (45.2ms): present?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:26 -> /tmp/_ruby_mjit_p5340u33.c
 MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): fetch_header@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:58 -> /tmp/_ruby_mjit_p17183u1673.c
-Warmup: 2998/50000JIT success (45.0ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p17183u1683.c
-Warmup: 3068/50000JIT success (116.5ms): safe_concat@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:167 -> /tmp/_ruby_mjit_p17183u1942.c
-Warmup: 3226/50000JIT success (244.0ms): config@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:30 -> /tmp/_ruby_mjit_p17183u1158.c
-Warmup: 3299/50000JIT success (87.8ms): event_stack@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:106 -> /tmp/_ruby_mjit_p17183u1687.c
-Warmup: 3332/50000JIT success (46.5ms): get_queue@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:126 -> /tmp/_ruby_mjit_p17183u1688.c
-Warmup: 3407/50000JIT success (114.8ms): listeners_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:55 -> /tmp/_ruby_mjit_p17183u1046.c
-Warmup: 3609/50000JIT success (294.7ms): convert_value@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:353 -> /tmp/_ruby_mjit_p17183u1679.c
-Warmup: 3818/50000JIT success (272.9ms): block in tag_options@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:63 -> /tmp/_ruby_mjit_p17183u1964.c
-Warmup: 3973/50000JIT success (237.8ms): tag_option@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:87 -> /tmp/_ruby_mjit_p17183u1965.c
-Warmup: 4028/50000JIT success (88.5ms): html_safe@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:255 -> /tmp/_ruby_mjit_p17183u1966.c
-Warmup: 4664/50000JIT success (843.2ms): []=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/utils.rb:468 -> /tmp/_ruby_mjit_p17183u1986.c
-Warmup: 4726/50000JIT success (87.6ms): path_info@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:132 -> /tmp/_ruby_mjit_p17183u1669.c
-Warmup: 4995/50000JIT success (362.1ms): __getobj__@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/delegate.rb:392 -> /tmp/_ruby_mjit_p17183u1845.c
-Warmup: 5593/50000JIT success (762.1ms): <<@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/buffers.rb:12 -> /tmp/_ruby_mjit_p17183u1948.c
-Warmup: 5651/50000JIT success (87.1ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/log_subscriber.rb:72 -> /tmp/_ruby_mjit_p17183u1684.c
-Warmup: 5681/50000JIT success (48.9ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:115 -> /tmp/_ruby_mjit_p17183u1685.c
-Warmup: 5699/50000JIT success (26.9ms): loaded?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:192 -> /tmp/_ruby_mjit_p17183u1960.c
-Warmup: 5714/50000JIT success (33.7ms): set_header@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:68 -> /tmp/_ruby_mjit_p17183u1667.c
-Warmup: 6275/50000JIT success (788.2ms): level@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:29 -> /tmp/_ruby_mjit_p17183u1724.c
-Warmup: 6311/50000JIT success (49.1ms): local_level@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:17 -> /tmp/_ruby_mjit_p17183u1725.c
-Warmup: 6368/50000JIT success (78.1ms): local_log_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:13 -> /tmp/_ruby_mjit_p17183u1726.c
-Warmup: 6950/50000JIT success (738.2ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:59 -> /tmp/_ruby_mjit_p17183u1663.c
-Warmup: 7521/50000JIT success (733.9ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:40 -> /tmp/_ruby_mjit_p17183u1664.c
-Warmup: 8066/50000JIT success (725.2ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/url.rb:186 -> /tmp/_ruby_mjit_p17183u1665.c
-Warmup: 8628/50000JIT success (729.7ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/filter_parameters.rb:34 -> /tmp/_ruby_mjit_p17183u1666.c
-Warmup: 8749/50000JIT success (168.9ms): current_tags@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:47 -> /tmp/_ruby_mjit_p17183u1890.c
-Warmup: 9363/50000JIT success (767.1ms): request_method@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:134 -> /tmp/_ruby_mjit_p17183u1670.c
-Warmup: 9433/50000JIT success (120.0ms): block in delegating_block@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/delegate.rb:347 -> /tmp/_ruby_mjit_p17183u1844.c
-Warmup: 10002/50000JIT success (755.2ms): concat@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:186 -> /tmp/_ruby_mjit_p17183u1950.c
-Warmup: 10095/50000JIT success (126.1ms): html_escape_interpolated_argument@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:243 -> /tmp/_ruby_mjit_p17183u1951.c
-Warmup: 10115/50000JIT success (29.4ms): block in initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/utils.rb:443 -> /tmp/_ruby_mjit_p17183u1985.c
-Warmup: 10187/50000JIT success (111.6ms): now@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:110 -> /tmp/_ruby_mjit_p17183u1722.c
-Warmup: 10219/50000JIT success (51.2ms): presence@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:46 -> /tmp/_ruby_mjit_p17183u1819.c
-Warmup: 10774/50000JIT success (758.9ms): default@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:206 -> /tmp/_ruby_mjit_p17183u1681.c
-Warmup: 10839/50000JIT success (85.5ms): script_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:129 -> /tmp/_ruby_mjit_p17183u1672.c
-Warmup: 10982/50000JIT success (220.2ms): scheme@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:188 -> /tmp/_ruby_mjit_p17183u1973.c
-Warmup: 10997/50000JIT success (25.8ms): to_s@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:214 -> /tmp/_ruby_mjit_p17183u1972.c
-Warmup: 11138/50000JIT success (218.1ms): forwarded_scheme@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:483 -> /tmp/_ruby_mjit_p17183u1974.c
-Warmup: 11944/50000JIT success (1084.8ms): to_s@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/numeric/conversions.rb:104 -> /tmp/_ruby_mjit_p17183u1275.c
-Warmup: 11995/50000JIT success (73.3ms): value@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:40 -> /tmp/_ruby_mjit_p17183u1940.c
-Warmup: 12101/50000JIT success (161.4ms): lookup_context@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/view_paths.rb:40 -> /tmp/_ruby_mjit_p17183u1915.c
-Warmup: 12672/50000JIT success (819.5ms): add@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger.rb:87 -> /tmp/_ruby_mjit_p17183u1924.c
-Warmup: 12983/50000JIT success (433.2ms): add@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:455 -> /tmp/_ruby_mjit_p17183u1925.c
-Warmup: 13048/50000JIT success (86.6ms): config@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:146 -> /tmp/_ruby_mjit_p17183u1956.c
-Warmup: 13100/50000JIT success (67.9ms): format_severity@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:577 -> /tmp/_ruby_mjit_p17183u1926.c
-Warmup: 13145/50000JIT success (69.1ms): format_message@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:581 -> /tmp/_ruby_mjit_p17183u1927.c
-Warmup: 13756/50000JIT success (812.3ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:22 -> /tmp/_ruby_mjit_p17183u1928.c
-Warmup: 13856/50000JIT success (129.6ms): tags_text@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:53 -> /tmp/_ruby_mjit_p17183u1929.c
-Warmup: 13885/50000JIT success (42.0ms): block in tags_text@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:56 -> /tmp/_ruby_mjit_p17183u1930.c
-Warmup: 13977/50000JIT success (133.9ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:596 -> /tmp/_ruby_mjit_p17183u1931.c
-Warmup: 14002/50000JIT success (49.1ms): format_datetime@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:603 -> /tmp/_ruby_mjit_p17183u1932.c
-Warmup: 14114/50000JIT success (170.1ms): msg2str@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:607 -> /tmp/_ruby_mjit_p17183u1933.c
-Warmup: 14176/50000JIT success (92.7ms): write@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:684 -> /tmp/_ruby_mjit_p17183u1934.c
-Warmup: 14224/50000JIT success (75.9ms): block in write@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:686 -> /tmp/_ruby_mjit_p17183u1935.c
-Warmup: 14266/50000JIT success (64.2ms): block in extract!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/slice.rb:46 -> /tmp/_ruby_mjit_p17183u1975.c
-Warmup: 14321/50000JIT success (83.5ms): load_for_read!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:212 -> /tmp/_ruby_mjit_p17183u1980.c
-Warmup: 14382/50000JIT success (106.9ms): committed?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:219 -> /tmp/_ruby_mjit_p17183u1981.c
-Warmup: 14401/50000JIT success (29.8ms): block in committed?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:219 -> /tmp/_ruby_mjit_p17183u1982.c
-Warmup: 14421/50000JIT success (58.4ms): get_header@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:181 -> /tmp/_ruby_mjit_p17183u1983.c
-Warmup: 14440/50000JIT success (41.0ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:48 -> /tmp/_ruby_mjit_p17183u1989.c
-Warmup: 14467/50000JIT success (58.8ms): get_or_default@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/concurrent-ruby-1.1.5/lib/concurrent/collection/map/non_concurrent_map_backend.rb:108 -> /tmp/_ruby_mjit_p17183u1791.c
-Warmup: 14807/50000JIT success (492.0ms): fetch@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/concurrent-ruby-1.1.5/lib/concurrent/map.rb:168 -> /tmp/_ruby_mjit_p17183u1792.c
-Warmup: 14871/50000JIT success (83.6ms): blank?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:122 -> /tmp/_ruby_mjit_p17183u1032.c
-Warmup: 14927/50000JIT success (89.9ms): owner_to_pool@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:1054 -> /tmp/_ruby_mjit_p17183u1432.c
-Warmup: 14998/50000JIT success (107.6ms): connection_handler@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/core.rb:130 -> /tmp/_ruby_mjit_p17183u1711.c
-Warmup: 15031/50000JIT success (59.9ms): connection_handler@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/runtime_registry.rb:20 -> /tmp/_ruby_mjit_p17183u1712.c
-Warmup: 15060/50000JIT success (67.3ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:34 -> /tmp/_ruby_mjit_p17183u1720.c
-Warmup: 15127/50000JIT success (121.1ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:43 -> /tmp/_ruby_mjit_p17183u1721.c
-Warmup: 15198/50000JIT success (109.1ms): retrieve_connection_pool@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:1035 -> /tmp/_ruby_mjit_p17183u1839.c
-Warmup: 15523/50000JIT success (451.8ms): instrument@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications.rb:166 -> /tmp/_ruby_mjit_p17183u1044.c
-Warmup: 15554/50000JIT success (48.4ms): listening?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:63 -> /tmp/_ruby_mjit_p17183u1045.c
-Warmup: 16143/50000JIT success (809.2ms): update@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:123 -> /tmp/_ruby_mjit_p17183u1676.c
-Warmup: 16209/50000JIT success (97.1ms): instrumenter@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications.rb:189 -> /tmp/_ruby_mjit_p17183u1716.c
-Warmup: 16273/50000JIT success (96.1ms): set_defaults@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:370 -> /tmp/_ruby_mjit_p17183u1708.c
-Warmup: 16297/50000JIT success (49.5ms): block in to_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:342 -> /tmp/_ruby_mjit_p17183u1709.c
-Warmup: 16357/50000JIT success (112.7ms): instrumenter_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications.rb:209 -> /tmp/_ruby_mjit_p17183u1717.c
-Warmup: 16376/50000JIT success (37.1ms): block in find_by_sql@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/querying.rb:44 -> /tmp/_ruby_mjit_p17183u1894.c
-Warmup: 16392/50000JIT success (54.0ms): block in hash_rows@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/result.rb:128 -> /tmp/_ruby_mjit_p17183u1895.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): info@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/logger.rb:524 -> /tmp/_ruby_mjit_p17183u1953.c
-Warmup: 16432/50000JIT success (113.4ms): inheritance_column@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/model_schema.rb:252 -> /tmp/_ruby_mjit_p17183u1896.c
-Warmup: 16448/50000JIT success (40.4ms): block (2 levels) in url_helpers@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:566 -> /tmp/_ruby_mjit_p17183u1949.c
-Warmup: 16500/50000JIT success (92.1ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/log_subscriber.rb:52 -> /tmp/_ruby_mjit_p17183u1952.c
-Warmup: 16568/50000JIT success (109.3ms): tag_builder@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:308 -> /tmp/_ruby_mjit_p17183u1970.c
-Warmup: 16659/50000JIT success (148.3ms): tag_options@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:59 -> /tmp/_ruby_mjit_p17183u1971.c
-Warmup: 17269/50000JIT success (824.0ms): respond_to?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/controller_helper.rb:30 -> /tmp/_ruby_mjit_p17183u1976.c
-Warmup: 17846/50000JIT success (763.2ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/utils.rb:464 -> /tmp/_ruby_mjit_p17183u1992.c
-Warmup: 17869/50000JIT success (33.8ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:60 -> /tmp/_ruby_mjit_p17183u1723.c
-Warmup: 17926/50000JIT success (92.6ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:90 -> /tmp/_ruby_mjit_p17183u1730.c
-Warmup: 17951/50000JIT success (49.2ms): block in start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:44 -> /tmp/_ruby_mjit_p17183u1728.c
-Warmup: 17983/50000JIT success (53.1ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:99 -> /tmp/_ruby_mjit_p17183u1729.c
-Warmup: 18012/50000JIT success (52.6ms): block in finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:48 -> /tmp/_ruby_mjit_p17183u1731.c
-Warmup: 18045/50000JIT success (54.8ms): finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:103 -> /tmp/_ruby_mjit_p17183u1732.c
-Warmup: 18138/50000JIT success (164.5ms): config@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n.rb:41 -> /tmp/_ruby_mjit_p17183u1115.c
-Warmup: 18204/50000JIT success (103.1ms): to_regexp@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:167 -> /tmp/_ruby_mjit_p17183u1646.c
-Warmup: 18228/50000JIT success (43.7ms): block in except!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/except.rb:21 -> /tmp/_ruby_mjit_p17183u1344.c
-Warmup: 18451/50000JIT success (350.3ms): instrument@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:19 -> /tmp/_ruby_mjit_p17183u1727.c
-Warmup: 18480/50000JIT success (46.3ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:33 -> /tmp/_ruby_mjit_p17183u1856.c
-Warmup: 18508/50000JIT success (43.9ms): finish_with_state@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:43 -> /tmp/_ruby_mjit_p17183u1736.c
-Warmup: 18585/50000JIT success (113.1ms): finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:47 -> /tmp/_ruby_mjit_p17183u1737.c
-Warmup: 18617/50000JIT success (60.5ms): sql_runtime=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/runtime_registry.rb:21 -> /tmp/_ruby_mjit_p17183u1738.c
-Warmup: 18698/50000JIT success (136.6ms): runtime@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:11 -> /tmp/_ruby_mjit_p17183u1746.c
-Warmup: 18734/50000JIT success (63.6ms): sql_runtime@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/runtime_registry.rb:20 -> /tmp/_ruby_mjit_p17183u1747.c
-Warmup: 18793/50000JIT success (108.7ms): runtime=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:7 -> /tmp/_ruby_mjit_p17183u1748.c
-Warmup: 18854/50000JIT success (121.6ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute_set.rb:15 -> /tmp/_ruby_mjit_p17183u1869.c
-Warmup: 18949/50000JIT success (145.7ms): match@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:157 -> /tmp/_ruby_mjit_p17183u1671.c
-Warmup: 18974/50000JIT success (42.8ms): type_klass@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:60 -> /tmp/_ruby_mjit_p17183u1917.c
-Warmup: 19069/50000JIT success (153.3ms): block in make_lambda@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:424 -> /tmp/_ruby_mjit_p17183u1706.c
-Warmup: 19169/50000JIT success (146.7ms): expand@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:403 -> /tmp/_ruby_mjit_p17183u1707.c
-Warmup: 19718/50000JIT success (771.4ms): delete@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:280 -> /tmp/_ruby_mjit_p17183u1682.c
-Warmup: 19788/50000JIT success (120.4ms): path_parameters@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameters.rb:83 -> /tmp/_ruby_mjit_p17183u1943.c
-Warmup: 20317/50000JIT success (777.4ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:162 -> /tmp/_ruby_mjit_p17183u1968.c
-Warmup: 20386/50000JIT success (105.3ms): _read_attribute@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/attribute_methods/read.rb:76 -> /tmp/_ruby_mjit_p17183u1944.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): info@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/log_subscriber.rb:95 -> /tmp/_ruby_mjit_p17183u1978.c
-Warmup: 20444/50000JIT success (104.9ms): fetch_value@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute_set.rb:47 -> /tmp/_ruby_mjit_p17183u1945.c
-Warmup: 20474/50000JIT success (64.2ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute_set/builder.rb:38 -> /tmp/_ruby_mjit_p17183u1946.c
-Warmup: 20543/50000JIT success (176.6ms): parse_content_type@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:411 -> /tmp/_ruby_mjit_p17183u1984.c
-Warmup: 20764/50000JIT success (345.6ms): jsonify@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/json/encoding.rb:85 -> /tmp/_ruby_mjit_p17183u1991.c
-Warmup: 20795/50000JIT success (45.6ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/body_proxy.rb:3 -> /tmp/_ruby_mjit_p17183u1993.c
-Warmup: 21350/50000JIT success (788.9ms): respond_to?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/body_proxy.rb:9 -> /tmp/_ruby_mjit_p17183u1994.c
-Warmup: 21438/50000JIT success (126.8ms): extract_options!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/array/extract_options.rb:24 -> /tmp/_ruby_mjit_p17183u743.c
-Warmup: 21483/50000JIT success (73.5ms): extractable_options?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/array/extract_options.rb:9 -> /tmp/_ruby_mjit_p17183u908.c
-Warmup: 21529/50000JIT success (81.0ms): primary_key@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/attribute_methods/primary_key.rb:74 -> /tmp/_ruby_mjit_p17183u1897.c
-Warmup: 21540/50000JIT success (24.6ms): blank?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:57 -> /tmp/_ruby_mjit_p17183u1439.c
-Warmup: 21552/50000JIT success (26.7ms): connection_cache_key@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:667 -> /tmp/_ruby_mjit_p17183u1713.c
-Warmup: 21570/50000JIT success (41.0ms): connection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_handling.rb:89 -> /tmp/_ruby_mjit_p17183u1836.c
-Warmup: 21602/50000JIT success (64.4ms): retrieve_connection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_handling.rb:117 -> /tmp/_ruby_mjit_p17183u1837.c
-Warmup: 21682/50000JIT success (156.2ms): retrieve_connection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:1007 -> /tmp/_ruby_mjit_p17183u1838.c
-Warmup: 21768/50000JIT success (135.8ms): connection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:381 -> /tmp/_ruby_mjit_p17183u1840.c
-Warmup: 22302/50000JIT success (747.2ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/log_subscriber.rb:79 -> /tmp/_ruby_mjit_p17183u1733.c
-Warmup: 22424/50000JIT success (190.4ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:86 -> /tmp/_ruby_mjit_p17183u1734.c
-Warmup: 22464/50000JIT success (66.0ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:58 -> /tmp/_ruby_mjit_p17183u1735.c
-Warmup: 22971/50000JIT success (745.3ms): finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/log_subscriber.rb:83 -> /tmp/_ruby_mjit_p17183u1744.c
-Warmup: 23060/50000JIT success (141.8ms): finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:94 -> /tmp/_ruby_mjit_p17183u1745.c
-Warmup: 23124/50000JIT success (96.3ms): duration@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:80 -> /tmp/_ruby_mjit_p17183u1775.c
-Warmup: 23177/50000JIT success (76.5ms): from_database@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:8 -> /tmp/_ruby_mjit_p17183u1855.c
-Warmup: 23786/50000JIT success (855.5ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:66 -> /tmp/_ruby_mjit_p17183u1680.c
-Warmup: 24231/50000JIT success (623.2ms): run_callbacks@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:94 -> /tmp/_ruby_mjit_p17183u1809.c
-Warmup: 24253/50000JIT success (32.2ms): empty?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:539 -> /tmp/_ruby_mjit_p17183u1811.c
-Warmup: 24312/50000JIT success (86.5ms): stringify_keys@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/keys.rb:39 -> /tmp/_ruby_mjit_p17183u1969.c
-Warmup: 24491/50000JIT success (311.1ms): check_param_encoding@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/utils.rb:29 -> /tmp/_ruby_mjit_p17183u1675.c
-Warmup: 24559/50000JIT success (103.0ms): symbols@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_type.rb:30 -> /tmp/_ruby_mjit_p17183u1918.c
-Warmup: 24644/50000JIT success (133.4ms): move@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/gtg/transition_table.rb:44 -> /tmp/_ruby_mjit_p17183u1999.c
-Warmup: 24700/50000JIT success (153.3ms): block in move@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/gtg/transition_table.rb:49 -> /tmp/_ruby_mjit_p17183u2000.c
-Warmup: 24724/50000JIT success (37.5ms): caching@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:60 -> /tmp/_ruby_mjit_p17183u1919.c
-Warmup: 24811/50000JIT success (126.2ms): session@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:146 -> /tmp/_ruby_mjit_p17183u1979.c
-Warmup: 24856/50000JIT success (69.0ms): block in find_routes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/router.rb:112 -> /tmp/_ruby_mjit_p17183u2001.c
-Warmup: 24879/50000JIT success (42.3ms): block in match_routes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/router.rb:152 -> /tmp/_ruby_mjit_p17183u2002.c
-Warmup: 24962/50000JIT success (148.6ms): matches?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/route.rb:162 -> /tmp/_ruby_mjit_p17183u2003.c
-Warmup: 25021/50000JIT success (100.9ms): match_verb@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/route.rb:197 -> /tmp/_ruby_mjit_p17183u2004.c
-Warmup: 25044/50000JIT success (46.8ms): block in match_verb@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/route.rb:198 -> /tmp/_ruby_mjit_p17183u2005.c
-Warmup: 25133/50000JIT success (136.6ms): block in initialize_details@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:237 -> /tmp/_ruby_mjit_p17183u2011.c
-Warmup: 25164/50000JIT success (62.5ms): reset_runtime@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:15 -> /tmp/_ruby_mjit_p17183u2015.c
-Warmup: 25210/50000JIT success (73.7ms): performed?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal.rb:184 -> /tmp/_ruby_mjit_p17183u2027.c
-Warmup: 25254/50000JIT success (84.5ms): hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:115 -> /tmp/_ruby_mjit_p17183u2032.c
-Warmup: 25295/50000JIT success (74.8ms): hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/value.rb:109 -> /tmp/_ruby_mjit_p17183u2033.c
-Warmup: 25519/50000JIT success (337.9ms): block in instrument@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/notifications.rb:168 -> /tmp/_ruby_mjit_p17183u2023.c
-Warmup: 25553/50000JIT success (51.1ms): cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/value.rb:37 -> /tmp/_ruby_mjit_p17183u2034.c
-Warmup: 25606/50000JIT success (81.0ms): args_for_lookup@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:154 -> /tmp/_ruby_mjit_p17183u2036.c
-Warmup: 25734/50000JIT success (213.2ms): normalize_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:203 -> /tmp/_ruby_mjit_p17183u2037.c
-Warmup: 25820/50000JIT success (129.5ms): detail_args_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:161 -> /tmp/_ruby_mjit_p17183u2038.c
-Warmup: 25963/50000JIT success (229.8ms): get@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:61 -> /tmp/_ruby_mjit_p17183u2039.c
-Warmup: 26014/50000JIT success (69.2ms): symbols@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template/types.rb:52 -> /tmp/_ruby_mjit_p17183u2040.c
-Warmup: 26028/50000JIT success (43.8ms): find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:55 -> /tmp/_ruby_mjit_p17183u2041.c
-Warmup: 26132/50000JIT success (167.2ms): _find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:74 -> /tmp/_ruby_mjit_p17183u2042.c
-Warmup: 26200/50000JIT success (105.7ms): block in _find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:76 -> /tmp/_ruby_mjit_p17183u2043.c
-Warmup: 26269/50000JIT success (107.6ms): block (2 levels) in _find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:77 -> /tmp/_ruby_mjit_p17183u2044.c
-Warmup: 26343/50000JIT success (126.3ms): find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template/resolver.rb:145 -> /tmp/_ruby_mjit_p17183u2045.c
-Warmup: 26661/50000JIT success (455.5ms): cached@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template/resolver.rb:181 -> /tmp/_ruby_mjit_p17183u2046.c
-Warmup: 27070/50000JIT success (590.9ms): cache@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template/resolver.rb:65 -> /tmp/_ruby_mjit_p17183u2047.c
-Warmup: 27110/50000JIT success (55.0ms): block in extract_details@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/renderer/abstract_renderer.rb:33 -> /tmp/_ruby_mjit_p17183u2050.c
-Warmup: 27208/50000JIT success (145.6ms): from_rails_root@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/log_subscriber.rb:59 -> /tmp/_ruby_mjit_p17183u2051.c
-Warmup: 27291/50000JIT success (129.1ms): rails_root@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/log_subscriber.rb:65 -> /tmp/_ruby_mjit_p17183u2052.c
-Warmup: 27547/50000JIT success (381.8ms): assign_default_value@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute_set/builder.rb:109 -> /tmp/_ruby_mjit_p17183u2054.c
-Warmup: 27580/50000JIT success (49.2ms): type_cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:164 -> /tmp/_ruby_mjit_p17183u2055.c
-Warmup: 27674/50000JIT success (139.0ms): evaluate@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/visitors.rb:37 -> /tmp/_ruby_mjit_p17183u2060.c
-Warmup: 28237/50000JIT success (796.1ms): ssl?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:420 -> /tmp/_ruby_mjit_p17183u2057.c
-Warmup: 28275/50000JIT success (55.8ms): ssl?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:252 -> /tmp/_ruby_mjit_p17183u2058.c
-Warmup: 28343/50000JIT success (94.5ms): parsed_content_type_header@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:423 -> /tmp/_ruby_mjit_p17183u2074.c
-Warmup: 28368/50000JIT success (46.7ms): strict_encode64@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/base64.rb:65 -> /tmp/_ruby_mjit_p17183u2066.c
-Warmup: 29001/50000JIT success (918.0ms): to_json@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/json/encoding.rb:55 -> /tmp/_ruby_mjit_p17183u2081.c
-Warmup: 29021/50000JIT success (33.4ms): block in to_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:131 -> /tmp/_ruby_mjit_p17183u2080.c
-Warmup: 29634/50000JIT success (874.2ms): to_json@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/json.rb:35 -> /tmp/_ruby_mjit_p17183u2082.c
-Warmup: 29922/50000JIT success (401.9ms): inflections@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/inflector/inflections.rb:252 -> /tmp/_ruby_mjit_p17183u653.c
-Warmup: 29979/50000JIT success (77.6ms): instance@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/inflector/inflections.rb:66 -> /tmp/_ruby_mjit_p17183u654.c
-Warmup: 30113/50000JIT success (212.7ms): underscore@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/inflector/methods.rb:92 -> /tmp/_ruby_mjit_p17183u664.c
-Warmup: 30176/50000JIT success (89.8ms): underscore@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/inflections.rb:127 -> /tmp/_ruby_mjit_p17183u663.c
-Warmup: 30210/50000JIT success (52.0ms): broadcast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:149 -> /tmp/_ruby_mjit_p17183u1270.c
-Warmup: 30329/50000JIT success (191.6ms): camelize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/inflector/methods.rb:69 -> /tmp/_ruby_mjit_p17183u1187.c
-Warmup: 30374/50000JIT success (78.6ms): block in camelize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/inflector/methods.rb:72 -> /tmp/_ruby_mjit_p17183u1188.c
-Warmup: 30950/50000JIT success (836.0ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/ordered_options.rb:70 -> /tmp/_ruby_mjit_p17183u1189.c
-Warmup: 31093/50000JIT success (206.9ms): camelize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/inflections.rb:91 -> /tmp/_ruby_mjit_p17183u1277.c
-Warmup: 31149/50000JIT success (85.3ms): query_string@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:136 -> /tmp/_ruby_mjit_p17183u1674.c
-Warmup: 31409/50000JIT success (374.0ms): block in update@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:127 -> /tmp/_ruby_mjit_p17183u1677.c
-Warmup: 31432/50000JIT success (33.8ms): block in invoke_before@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:513 -> /tmp/_ruby_mjit_p17183u1705.c
-MJIT warning: Skipped to compile unsupported instruction: opt_call_c_function
-JIT failure (0.0ms): halted=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:159 -> /tmp/_ruby_mjit_p17183u1912.c
-Warmup: 31483/50000JIT success (78.6ms): options@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:75 -> /tmp/_ruby_mjit_p17183u1987.c
-Warmup: 31536/50000JIT success (96.2ms): find@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:39 -> /tmp/_ruby_mjit_p17183u1988.c
-Warmup: 31580/50000JIT success (74.2ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:75 -> /tmp/_ruby_mjit_p17183u1995.c
-Warmup: 31628/50000JIT success (87.0ms): default_locale@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n/config.rb:30 -> /tmp/_ruby_mjit_p17183u2012.c
-Warmup: 31734/50000JIT success (182.3ms): _prefixes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/view_paths.rb:15 -> /tmp/_ruby_mjit_p17183u2010.c
-Warmup: 31778/50000JIT success (72.3ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:91 -> /tmp/_ruby_mjit_p17183u2030.c
-Warmup: 31823/50000JIT success (78.2ms): path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:403 -> /tmp/_ruby_mjit_p17183u1996.c
-Warmup: 31906/50000JIT success (136.4ms): ips_from@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:160 -> /tmp/_ruby_mjit_p17183u1997.c
-Warmup: 31930/50000JIT success (49.9ms): routes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:138 -> /tmp/_ruby_mjit_p17183u2059.c
-Warmup: 31963/50000JIT success (54.1ms): block in check_param_encoding@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/utils.rb:34 -> /tmp/_ruby_mjit_p17183u2006.c
-Warmup: 32081/50000JIT success (205.6ms): controller_class_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:84 -> /tmp/_ruby_mjit_p17183u2007.c
-Warmup: 32132/50000JIT success (82.3ms): constantize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/dependencies.rb:612 -> /tmp/_ruby_mjit_p17183u2008.c
-Warmup: 32224/50000JIT success (151.2ms): get@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/dependencies.rb:580 -> /tmp/_ruby_mjit_p17183u2009.c
-Warmup: 32253/50000JIT success (54.3ms): remote_addr@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2068.c
-Warmup: 32656/50000JIT success (588.6ms): block in call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameter_filter.rb:61 -> /tmp/_ruby_mjit_p17183u2016.c
-Warmup: 32711/50000JIT success (94.8ms): get?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:162 -> /tmp/_ruby_mjit_p17183u2026.c
-Warmup: 32736/50000JIT success (39.2ms): block (2 levels) in call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameter_filter.rb:63 -> /tmp/_ruby_mjit_p17183u2017.c
-Warmup: 32781/50000JIT success (74.7ms): []=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:92 -> /tmp/_ruby_mjit_p17183u2018.c
-Warmup: 32862/50000JIT success (135.8ms): dup@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:241 -> /tmp/_ruby_mjit_p17183u2020.c
-Warmup: 32930/50000JIT success (169.6ms): to_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:338 -> /tmp/_ruby_mjit_p17183u2021.c
-Warmup: 32963/50000JIT success (57.5ms): block in dup@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:242 -> /tmp/_ruby_mjit_p17183u2022.c
-Warmup: 32988/50000JIT success (46.3ms): block (2 levels) in <module:Callbacks>@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/abstract_controller/callbacks.rb:34 -> /tmp/_ruby_mjit_p17183u2028.c
-Warmup: 33021/50000JIT success (64.5ms): _prefixes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/view_paths.rb:33 -> /tmp/_ruby_mjit_p17183u2035.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): session@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal.rb:149 -> /tmp/_ruby_mjit_p17183u2029.c
-Warmup: 33095/50000JIT success (134.7ms): params@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/strong_parameters.rb:1075 -> /tmp/_ruby_mjit_p17183u2069.c
-Warmup: 33151/50000JIT success (102.4ms): block in _normalize_text@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/rendering.rb:104 -> /tmp/_ruby_mjit_p17183u2048.c
-Warmup: 33196/50000JIT success (77.6ms): build_buffer@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:453 -> /tmp/_ruby_mjit_p17183u2075.c
-Warmup: 33233/50000JIT success (63.2ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/strong_parameters.rb:551 -> /tmp/_ruby_mjit_p17183u2070.c
-Warmup: 33324/50000JIT success (160.2ms): block in _render_to_body_with_renderer@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/renderers.rb:146 -> /tmp/_ruby_mjit_p17183u2049.c
-Warmup: 33351/50000JIT success (45.3ms): deserialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/value.rb:23 -> /tmp/_ruby_mjit_p17183u2056.c
-Warmup: 33423/50000JIT success (136.0ms): block in evaluate@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/visitors.rb:40 -> /tmp/_ruby_mjit_p17183u2061.c
-Warmup: 33476/50000JIT success (98.0ms): convert_hashes_to_parameters@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/strong_parameters.rb:829 -> /tmp/_ruby_mjit_p17183u2071.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): content_tag@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:269 -> /tmp/_ruby_mjit_p17183u2062.c
-Warmup: 33643/50000JIT success (279.8ms): convert_value_to_parameters@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/strong_parameters.rb:835 -> /tmp/_ruby_mjit_p17183u2072.c
-Warmup: 33820/50000JIT success (263.9ms): content_tag_string@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:53 -> /tmp/_ruby_mjit_p17183u2063.c
-Warmup: 33835/50000JIT success (22.1ms): block in <module:TagHelper>@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:30 -> /tmp/_ruby_mjit_p17183u2064.c
-Warmup: 33930/50000JIT success (145.9ms): tag@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:235 -> /tmp/_ruby_mjit_p17183u2067.c
-Warmup: 33957/50000JIT success (45.0ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:99 -> /tmp/_ruby_mjit_p17183u2076.c
-Warmup: 33990/50000JIT success (62.4ms): content_type@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:246 -> /tmp/_ruby_mjit_p17183u2077.c
-Warmup: 34021/50000JIT success (59.9ms): block in match@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/dynamic_matchers.rb:33 -> /tmp/_ruby_mjit_p17183u1814.c
-Warmup: 34098/50000JIT success (135.8ms): pattern@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/dynamic_matchers.rb:37 -> /tmp/_ruby_mjit_p17183u1815.c
-Warmup: 34122/50000JIT success (37.7ms): request@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/cookies.rb:489 -> /tmp/_ruby_mjit_p17183u1697.c
-Warmup: 34149/50000JIT success (43.9ms): inheritable_copy@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/ordered_options.rb:81 -> /tmp/_ruby_mjit_p17183u1411.c
-Warmup: 34206/50000JIT success (98.3ms): aead_mode?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/message_encryptor.rb:217 -> /tmp/_ruby_mjit_p17183u1698.c
-Warmup: 34261/50000JIT success (99.9ms): symbolize_keys@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/keys.rb:56 -> /tmp/_ruby_mjit_p17183u1714.c
-Warmup: 34388/50000JIT success (217.9ms): ast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/routes.rb:51 -> /tmp/_ruby_mjit_p17183u1668.c
-Warmup: 34501/50000JIT success (169.4ms): method_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:337 -> /tmp/_ruby_mjit_p17183u1954.c
-Warmup: 34703/50000JIT success (304.9ms): stale_session_check!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/abstract_store.rb:53 -> /tmp/_ruby_mjit_p17183u1959.c
-Warmup: 34744/50000JIT success (61.9ms): random_bytes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/securerandom.rb:134 -> /tmp/_ruby_mjit_p17183u1961.c
-Warmup: 34876/50000JIT success (207.0ms): gen_random_urandom@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/securerandom.rb:103 -> /tmp/_ruby_mjit_p17183u1962.c
-Warmup: 34906/50000JIT success (45.5ms): ref@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_type.rb:244 -> /tmp/_ruby_mjit_p17183u2019.c
-Warmup: 34960/50000JIT success (83.5ms): unpacked_cookie_data@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/cookie_store.rb:82 -> /tmp/_ruby_mjit_p17183u1998.c
-Warmup: 35074/50000JIT success (218.8ms): block in halting@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:192 -> /tmp/_ruby_mjit_p17183u2024.c
-Warmup: 35095/50000JIT success (33.6ms): block (2 levels) in halting@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:198 -> /tmp/_ruby_mjit_p17183u2025.c
-Warmup: 35181/50000JIT success (147.9ms): parameters@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameters.rb:50 -> /tmp/_ruby_mjit_p17183u2031.c
-Warmup: 35197/50000JIT success (32.0ms): instrument_payload@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:357 -> /tmp/_ruby_mjit_p17183u2053.c
-Warmup: 35678/50000JIT success (779.8ms): fullpath@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:238 -> /tmp/_ruby_mjit_p17183u2084.c
-Warmup: 35727/50000JIT success (73.0ms): request_method@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:135 -> /tmp/_ruby_mjit_p17183u2089.c
-Warmup: 35874/50000JIT success (249.0ms): check_method@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:425 -> /tmp/_ruby_mjit_p17183u2090.c
-Warmup: 35947/50000JIT success (126.6ms): fullpath@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/request.rb:407 -> /tmp/_ruby_mjit_p17183u2085.c
-Warmup: 35975/50000JIT success (40.8ms): block in default@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:207 -> /tmp/_ruby_mjit_p17183u2073.c
-Warmup: 36007/50000JIT success (51.4ms): block in captures@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:136 -> /tmp/_ruby_mjit_p17183u2093.c
-Warmup: 36050/50000JIT success (74.1ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:139 -> /tmp/_ruby_mjit_p17183u2094.c
-Warmup: 36106/50000JIT success (93.0ms): cookie_jar@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/cookies.rb:11 -> /tmp/_ruby_mjit_p17183u2083.c
-Warmup: 36165/50000JIT success (101.6ms): block (2 levels) in find_routes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/router.rb:128 -> /tmp/_ruby_mjit_p17183u2095.c
-Warmup: 36282/50000JIT success (193.0ms): set_binary_encoding@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameters.rb:89 -> /tmp/_ruby_mjit_p17183u2096.c
-Warmup: 36317/50000JIT success (50.1ms): binary_params_for?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameters.rb:100 -> /tmp/_ruby_mjit_p17183u2097.c
-Warmup: 36353/50000JIT success (56.1ms): binary_params_for?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/parameter_encoding.rb:18 -> /tmp/_ruby_mjit_p17183u2098.c
-Warmup: 36385/50000JIT success (50.5ms): locale@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n.rb:54 -> /tmp/_ruby_mjit_p17183u2109.c
-Warmup: 36438/50000JIT success (115.8ms): locale@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n/config.rb:9 -> /tmp/_ruby_mjit_p17183u2110.c
-Warmup: 36513/50000JIT success (136.3ms): clock_time@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/utils.rb:81 -> /tmp/_ruby_mjit_p17183u2087.c
-Warmup: 36562/50000JIT success (82.0ms): request_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:294 -> /tmp/_ruby_mjit_p17183u2088.c
-Warmup: 36617/50000JIT success (95.5ms): formats@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_negotiation.rb:58 -> /tmp/_ruby_mjit_p17183u2114.c
-Warmup: 36696/50000JIT success (139.1ms): body=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:311 -> /tmp/_ruby_mjit_p17183u2099.c
-Warmup: 37176/50000JIT success (762.1ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/url_for.rb:106 -> /tmp/_ruby_mjit_p17183u2107.c
-Warmup: 37197/50000JIT success (33.7ms): registered_details@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:67 -> /tmp/_ruby_mjit_p17183u2108.c
-Warmup: 37272/50000JIT success (110.8ms): info?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger.rb:94 -> /tmp/_ruby_mjit_p17183u2115.c
-Warmup: 37309/50000JIT success (66.4ms): block in body=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:315 -> /tmp/_ruby_mjit_p17183u2100.c
-Warmup: 37332/50000JIT success (42.7ms): protect_against_forgery?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/request_forgery_protection.rb:415 -> /tmp/_ruby_mjit_p17183u2119.c
-Warmup: 37372/50000JIT success (69.0ms): block in type_casted_binds@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/quoting.rb:145 -> /tmp/_ruby_mjit_p17183u2123.c
-Warmup: 37404/50000JIT success (67.4ms): value_for_database@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:54 -> /tmp/_ruby_mjit_p17183u2124.c
-Warmup: 37433/50000JIT success (52.5ms): munge_body_object@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:457 -> /tmp/_ruby_mjit_p17183u2101.c
-Warmup: 37513/50000JIT success (148.0ms): type_cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/quoting.rb:24 -> /tmp/_ruby_mjit_p17183u2125.c
-Warmup: 38221/50000JIT success (1063.7ms): _type_cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/postgresql/quoting.rb:111 -> /tmp/_ruby_mjit_p17183u2126.c
-Warmup: 38255/50000JIT success (49.2ms): allow_forgery_protection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:115 -> /tmp/_ruby_mjit_p17183u2120.c
-Warmup: 38490/50000JIT success (378.8ms): _type_cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/quoting.rb:183 -> /tmp/_ruby_mjit_p17183u2127.c
-Warmup: 38566/50000JIT success (108.3ms): cache_control_headers@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/cache.rb:147 -> /tmp/_ruby_mjit_p17183u2104.c
-Warmup: 38612/50000JIT success (72.3ms): cache_control_segments@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/cache.rb:139 -> /tmp/_ruby_mjit_p17183u2105.c
-Warmup: 38660/50000JIT success (85.8ms): cache_control@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/response.rb:199 -> /tmp/_ruby_mjit_p17183u2106.c
-Warmup: 39249/50000JIT success (887.1ms): ===@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/time/calculations.rb:17 -> /tmp/_ruby_mjit_p17183u2128.c
-Warmup: 39294/50000JIT success (78.7ms): config=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n.rb:46 -> /tmp/_ruby_mjit_p17183u2112.c
-Warmup: 39311/50000JIT success (35.8ms): allow_forgery_protection@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p17183u2121.c
-Warmup: 39352/50000JIT success (77.3ms): types_which_need_no_typecasting@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/quoting.rb:160 -> /tmp/_ruby_mjit_p17183u2129.c
-Warmup: 39377/50000JIT success (61.0ms): block in sql@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:35 -> /tmp/_ruby_mjit_p17183u2130.c
-Warmup: 39496/50000JIT success (243.3ms): render_bind@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:51 -> /tmp/_ruby_mjit_p17183u2131.c
-Warmup: 39506/50000JIT success (20.0ms): binary?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/value.rb:57 -> /tmp/_ruby_mjit_p17183u2132.c
-Warmup: 39665/50000JIT success (286.7ms): color@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/log_subscriber.rb:105 -> /tmp/_ruby_mjit_p17183u2133.c
-Warmup: 39683/50000JIT success (37.1ms): colorize_logging@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:67 -> /tmp/_ruby_mjit_p17183u2134.c
-Warmup: 39747/50000JIT success (120.9ms): define_attribute_methods@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/attribute_methods.rb:56 -> /tmp/_ruby_mjit_p17183u2135.c
-Warmup: 40269/50000JIT success (840.9ms): formats=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:246 -> /tmp/_ruby_mjit_p17183u2136.c
-Warmup: 40337/50000JIT success (113.0ms): formats=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:33 -> /tmp/_ruby_mjit_p17183u2137.c
-Warmup: 40403/50000JIT success (116.7ms): variant@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_negotiation.rb:100 -> /tmp/_ruby_mjit_p17183u2138.c
-Warmup: 40429/50000JIT success (52.9ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:115 -> /tmp/_ruby_mjit_p17183u2139.c
-Warmup: 40464/50000JIT success (74.6ms): connected?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_handling.rb:122 -> /tmp/_ruby_mjit_p17183u2140.c
-Warmup: 40494/50000JIT success (70.7ms): connected?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:1015 -> /tmp/_ruby_mjit_p17183u2141.c
-Warmup: 40535/50000JIT success (91.0ms): connected?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:422 -> /tmp/_ruby_mjit_p17183u2142.c
-Warmup: 40555/50000JIT success (44.1ms): block in connected?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:423 -> /tmp/_ruby_mjit_p17183u2143.c
-Warmup: 40615/50000JIT success (121.9ms): view_renderer@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/rendering.rb:78 -> /tmp/_ruby_mjit_p17183u2144.c
-Warmup: 40644/50000JIT success (61.1ms): block in view_assigns@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/abstract_controller/rendering.rb:69 -> /tmp/_ruby_mjit_p17183u2145.c
-Warmup: 40668/50000JIT success (55.2ms): block in assign@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/base.rb:191 -> /tmp/_ruby_mjit_p17183u2146.c
-Warmup: 40689/50000JIT success (45.1ms): formats@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:29 -> /tmp/_ruby_mjit_p17183u2147.c
-Warmup: 40831/50000JIT success (277.9ms): resolve_layout@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/renderer/template_renderer.rb:79 -> /tmp/_ruby_mjit_p17183u2148.c
-Warmup: 40846/50000JIT success (22.4ms): _conditional_layout?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/layouts.rb:376 -> /tmp/_ruby_mjit_p17183u2149.c
-Warmup: 40879/50000JIT success (65.8ms): find_all@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/lookup_context.rb:124 -> /tmp/_ruby_mjit_p17183u2150.c
-Warmup: 40931/50000JIT success (116.9ms): render@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:156 -> /tmp/_ruby_mjit_p17183u2151.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): instrument_render_template@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:353 -> /tmp/_ruby_mjit_p17183u2152.c
-Warmup: 40970/50000JIT success (100.3ms): cast_value@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/string.rb:16 -> /tmp/_ruby_mjit_p17183u2157.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): block in render@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:157 -> /tmp/_ruby_mjit_p17183u2153.c
-Warmup: 41013/50000JIT success (102.6ms): compile!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template.rb:240 -> /tmp/_ruby_mjit_p17183u2154.c
-Warmup: 41460/50000JIT success (769.3ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/buffers.rb:7 -> /tmp/_ruby_mjit_p17183u2155.c
-Warmup: 41514/50000JIT success (89.7ms): flash_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/flash.rb:57 -> /tmp/_ruby_mjit_p17183u2156.c
-Warmup: 41626/50000JIT success (201.2ms): block (2 levels) in define_url_helper@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:322 -> /tmp/_ruby_mjit_p17183u2158.c
-Warmup: 42238/50000JIT success (915.4ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:198 -> /tmp/_ruby_mjit_p17183u2159.c
-Warmup: 42261/50000JIT success (33.5ms): optimize_routes_generation?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:228 -> /tmp/_ruby_mjit_p17183u2160.c
-Warmup: 42749/50000JIT success (792.2ms): optimize_routes_generation?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/routing_url_for.rb:132 -> /tmp/_ruby_mjit_p17183u2161.c
-Warmup: 42790/50000JIT success (67.6ms): optimize_routes_generation?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/url_for.rb:218 -> /tmp/_ruby_mjit_p17183u2162.c
-Warmup: 42814/50000JIT success (45.0ms): optimize_routes_generation?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:783 -> /tmp/_ruby_mjit_p17183u2163.c
-Warmup: 42917/50000JIT success (184.9ms): raw_host_with_port@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/url.rb:221 -> /tmp/_ruby_mjit_p17183u2166.c
-Warmup: 43464/50000JIT success (807.9ms): url_options@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/routing_url_for.rb:122 -> /tmp/_ruby_mjit_p17183u2164.c
-Warmup: 44202/50000JIT success (1154.0ms): url_options@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_controller/metal/url_for.rb:30 -> /tmp/_ruby_mjit_p17183u2165.c
-Warmup: 44226/50000JIT success (42.0ms): x_forwarded_host@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2167.c
-Warmup: 44253/50000JIT success (47.8ms): server_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2168.c
-Warmup: 44295/50000JIT success (74.2ms): protocol@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/url.rb:207 -> /tmp/_ruby_mjit_p17183u2169.c
-Warmup: 44371/50000JIT success (136.5ms): optimized_helper@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:220 -> /tmp/_ruby_mjit_p17183u2170.c
-Warmup: 44430/50000JIT success (107.5ms): parameterize_args@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:232 -> /tmp/_ruby_mjit_p17183u2171.c
-Warmup: 44481/50000JIT success (91.9ms): id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/attribute_methods/primary_key.rb:18 -> /tmp/_ruby_mjit_p17183u2172.c
-Warmup: 44509/50000JIT success (54.5ms): sync_with_transaction_state@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/transactions.rb:490 -> /tmp/_ruby_mjit_p17183u2173.c
-Warmup: 44593/50000JIT success (152.1ms): update_attributes_from_transaction_state@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/transactions.rb:494 -> /tmp/_ruby_mjit_p17183u2174.c
-Warmup: 44611/50000JIT success (45.8ms): format@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/route.rb:136 -> /tmp/_ruby_mjit_p17183u2175.c
-Warmup: 44637/50000JIT success (58.2ms): block in evaluate@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/visitors.rb:47 -> /tmp/_ruby_mjit_p17183u2176.c
-Warmup: 44670/50000JIT success (66.8ms): find_script_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:787 -> /tmp/_ruby_mjit_p17183u2177.c
-Warmup: 44727/50000JIT success (135.4ms): block in <class:RouteSet>@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:338 -> /tmp/_ruby_mjit_p17183u2178.c
-Warmup: 44805/50000JIT success (163.0ms): path_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/url.rb:69 -> /tmp/_ruby_mjit_p17183u2179.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): link_to@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/url_helper.rb:196 -> /tmp/_ruby_mjit_p17183u2180.c
-Warmup: 44872/50000JIT success (130.6ms): convert_options_to_data_attributes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/url_helper.rb:575 -> /tmp/_ruby_mjit_p17183u2181.c
-Warmup: 44922/50000JIT success (108.8ms): link_to_remote_options?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/url_helper.rb:590 -> /tmp/_ruby_mjit_p17183u2182.c
-Warmup: 45648/50000JIT success (1209.6ms): url_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/routing_url_for.rb:79 -> /tmp/_ruby_mjit_p17183u2183.c
-Warmup: 45691/50000JIT success (76.8ms): content_security_policy@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/content_security_policy.rb:59 -> /tmp/_ruby_mjit_p17183u2184.c
-Warmup: 45740/50000JIT success (106.1ms): compute_integrity?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:197 -> /tmp/_ruby_mjit_p17183u2185.c
-Warmup: 45794/50000JIT success (107.6ms): secure_subresource_integrity_context?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:211 -> /tmp/_ruby_mjit_p17183u2186.c
-Warmup: 45881/50000JIT success (167.4ms): local?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:404 -> /tmp/_ruby_mjit_p17183u2187.c
-Warmup: 45929/50000JIT success (97.7ms): request_debug_assets?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:217 -> /tmp/_ruby_mjit_p17183u2188.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): params@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/controller_helper.rb:16 -> /tmp/_ruby_mjit_p17183u2189.c
-Warmup: 45996/50000JIT success (127.2ms): extract!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/slice.rb:45 -> /tmp/_ruby_mjit_p17183u2190.c
-Warmup: 46291/50000JIT success (497.9ms): asset_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/asset_url_helper.rb:183 -> /tmp/_ruby_mjit_p17183u2191.c
-Warmup: 46388/50000JIT success (169.8ms): compute_asset_extname@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/asset_url_helper.rb:239 -> /tmp/_ruby_mjit_p17183u2192.c
-Warmup: 47066/50000JIT success (1052.3ms): compute_asset_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:76 -> /tmp/_ruby_mjit_p17183u2193.c
-Warmup: 47112/50000JIT success (88.9ms): resolve_asset_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:100 -> /tmp/_ruby_mjit_p17183u2194.c
-Warmup: 47169/50000JIT success (108.5ms): resolve_asset@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:240 -> /tmp/_ruby_mjit_p17183u2195.c
-Warmup: 47244/50000JIT success (151.9ms): asset_resolver_strategies@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:249 -> /tmp/_ruby_mjit_p17183u2196.c
-Warmup: 47429/50000JIT success (313.8ms): block in resolve_asset@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:241 -> /tmp/_ruby_mjit_p17183u2197.c
-Warmup: 47448/50000JIT success (45.2ms): block in resolve_asset_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:101 -> /tmp/_ruby_mjit_p17183u2198.c
-Warmup: 47472/50000JIT success (44.1ms): asset_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:286 -> /tmp/_ruby_mjit_p17183u2199.c
-Warmup: 47511/50000JIT success (63.6ms): digest_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:292 -> /tmp/_ruby_mjit_p17183u2200.c
-Warmup: 47542/50000JIT success (64.7ms): assets@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-3.7.2/lib/sprockets/manifest.rb:97 -> /tmp/_ruby_mjit_p17183u2201.c
-Warmup: 47587/50000JIT success (87.6ms): legacy_debug_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/helper.rb:257 -> /tmp/_ruby_mjit_p17183u2202.c
-Warmup: 47612/50000JIT success (44.0ms): relative_url_root@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p17183u2203.c
-Warmup: 48014/50000JIT success (638.5ms): compute_asset_host@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/helpers/asset_url_helper.rb:273 -> /tmp/_ruby_mjit_p17183u2204.c
-Warmup: 48037/50000JIT success (32.6ms): asset_host@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p17183u2205.c
-Warmup: 48078/50000JIT success (67.2ms): send_early_hints@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:214 -> /tmp/_ruby_mjit_p17183u2206.c
-Warmup: 48121/50000JIT success (84.0ms): has_key?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:97 -> /tmp/_ruby_mjit_p17183u2210.c
-Warmup: 48204/50000JIT success (146.5ms): loaded_session?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/abstract_store.rb:75 -> /tmp/_ruby_mjit_p17183u2211.c
-Warmup: 48285/50000JIT success (150.6ms): to_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:129 -> /tmp/_ruby_mjit_p17183u2215.c
-Warmup: 48308/50000JIT success (42.4ms): block in commit_session@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:352 -> /tmp/_ruby_mjit_p17183u2216.c
-Warmup: 48368/50000JIT success (110.1ms): symbolize_keys!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/keys.rb:63 -> /tmp/_ruby_mjit_p17183u2217.c
-Warmup: 48408/50000JIT success (80.9ms): block in as_json@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/json.rb:171 -> /tmp/_ruby_mjit_p17183u2218.c
-Warmup: 48427/50000JIT success (34.0ms): as_json@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/json.rb:86 -> /tmp/_ruby_mjit_p17183u2219.c
-Warmup: 48456/50000JIT success (71.1ms): block in jsonify@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/json/encoding.rb:92 -> /tmp/_ruby_mjit_p17183u2220.c
-Warmup: 48472/50000JIT success (30.8ms): to_s@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/json/encoding.rb:63 -> /tmp/_ruby_mjit_p17183u2221.c
-Warmup: 48520/50000JIT success (94.1ms): escape@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/utils.rb:28 -> /tmp/_ruby_mjit_p17183u2223.c
-Warmup: 48745/50000JIT success (391.7ms): encode_www_form_component@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/uri/common.rb:368 -> /tmp/_ruby_mjit_p17183u2224.c
-Warmup: 48853/50000JIT success (169.4ms): logger@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/log_subscriber.rb:57 -> /tmp/_ruby_mjit_p17183u2225.c
-Warmup: 48972/50000JIT success (188.3ms): ==@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:107 -> /tmp/_ruby_mjit_p17183u2237.c
-Warmup: 49080/50000JIT success (183.2ms): ==@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/type/value.rb:101 -> /tmp/_ruby_mjit_p17183u2238.c
-Warmup: 49607/50000JIT success (859.0ms): respond_to_missing?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/dynamic_matchers.rb:6 -> /tmp/_ruby_mjit_p17183u1813.c
-Warmup: 49677/50000JIT success (116.2ms): match@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/dynamic_matchers.rb:32 -> /tmp/_ruby_mjit_p17183u1903.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): each@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/set.rb:336 -> /tmp/_ruby_mjit_p17183u817.c
-Warmup: 49746/50000JIT success (127.3ms): load_schema@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/model_schema.rb:454 -> /tmp/_ruby_mjit_p17183u1841.c
-Warmup: 49779/50000JIT success (62.3ms): schema_loaded?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/model_schema.rb:450 -> /tmp/_ruby_mjit_p17183u1842.c
-Warmup: 49916/50000JIT success (258.4ms): env@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails.rb:72 -> /tmp/_ruby_mjit_p17183u962.c
+JIT failure (0.0ms): fetch_header@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:58 -> /tmp/_ruby_mjit_p5340u34.c
+Warmup: 3130/50000JIT success (48.8ms): logger@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p5340u35.c
+Warmup: 3197/50000JIT success (104.3ms): safe_concat@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:167 -> /tmp/_ruby_mjit_p5340u36.c
+Warmup: 3334/50000JIT success (190.7ms): config@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:30 -> /tmp/_ruby_mjit_p5340u37.c
+Warmup: 3394/50000JIT success (91.6ms): event_stack@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:106 -> /tmp/_ruby_mjit_p5340u38.c
+Warmup: 3425/50000JIT success (65.6ms): get_queue@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:126 -> /tmp/_ruby_mjit_p5340u39.c
+Warmup: 3509/50000JIT success (141.1ms): listeners_for@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/fanout.rb:55 -> /tmp/_ruby_mjit_p5340u40.c
+Warmup: 3678/50000JIT success (231.4ms): convert_value@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:353 -> /tmp/_ruby_mjit_p5340u41.c
+Warmup: 3894/50000JIT success (260.6ms): block in tag_options@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:63 -> /tmp/_ruby_mjit_p5340u42.c
+Warmup: 4025/50000JIT success (172.9ms): tag_option@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionview-5.2.2.1/lib/action_view/helpers/tag_helper.rb:87 -> /tmp/_ruby_mjit_p5340u43.c
+Warmup: 4085/50000JIT success (86.2ms): html_safe@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:255 -> /tmp/_ruby_mjit_p5340u44.c
+Warmup: 4784/50000JIT success (859.4ms): []=@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/utils.rb:468 -> /tmp/_ruby_mjit_p5340u45.c
+Warmup: 4854/50000JIT success (87.1ms): path_info@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:132 -> /tmp/_ruby_mjit_p5340u47.c
+Warmup: 4931/50000JIT success (93.1ms): logger@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_controller/log_subscriber.rb:72 -> /tmp/_ruby_mjit_p5340u49.c
+Warmup: 5581/50000JIT success (793.2ms): <<@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionview-5.2.2.1/lib/action_view/buffers.rb:12 -> /tmp/_ruby_mjit_p5340u51.c
+Warmup: 5620/50000JIT success (48.8ms): logger@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:115 -> /tmp/_ruby_mjit_p5340u50.c
+Warmup: 5881/50000JIT success (348.2ms): __getobj__@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/delegate.rb:392 -> /tmp/_ruby_mjit_p5340u46.c
+Warmup: 5900/50000JIT success (24.1ms): loaded?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:192 -> /tmp/_ruby_mjit_p5340u48.c
+Warmup: 5921/50000JIT success (31.5ms): set_header@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:68 -> /tmp/_ruby_mjit_p5340u52.c
+Warmup: 6564/50000JIT success (795.3ms): level@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:29 -> /tmp/_ruby_mjit_p5340u53.c
+Warmup: 6607/50000JIT success (49.9ms): local_level@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:17 -> /tmp/_ruby_mjit_p5340u54.c
+Warmup: 6668/50000JIT success (81.7ms): local_log_id@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/logger_thread_safe_level.rb:13 -> /tmp/_ruby_mjit_p5340u55.c
+Warmup: 7264/50000JIT success (779.6ms): initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:59 -> /tmp/_ruby_mjit_p5340u56.c
+Warmup: 7885/50000JIT success (759.4ms): initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:40 -> /tmp/_ruby_mjit_p5340u57.c
+Warmup: 8513/50000JIT success (769.3ms): initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/url.rb:186 -> /tmp/_ruby_mjit_p5340u58.c
+Warmup: 9139/50000JIT success (759.2ms): initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/filter_parameters.rb:34 -> /tmp/_ruby_mjit_p5340u59.c
+Warmup: 9238/50000JIT success (123.6ms): current_tags@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:47 -> /tmp/_ruby_mjit_p5340u60.c
+Warmup: 9899/50000JIT success (813.0ms): request_method@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:134 -> /tmp/_ruby_mjit_p5340u62.c
+Warmup: 9987/50000JIT success (113.7ms): block in delegating_block@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/delegate.rb:347 -> /tmp/_ruby_mjit_p5340u61.c
+Warmup: 10617/50000JIT success (770.6ms): concat@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:186 -> /tmp/_ruby_mjit_p5340u63.c
+Warmup: 10704/50000JIT success (109.5ms): html_escape_interpolated_argument@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:243 -> /tmp/_ruby_mjit_p5340u64.c
+Warmup: 10726/50000JIT success (29.4ms): block in initialize@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/utils.rb:443 -> /tmp/_ruby_mjit_p5340u65.c
+Warmup: 10810/50000JIT success (133.6ms): now@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/subscriber.rb:110 -> /tmp/_ruby_mjit_p5340u66.c
+Warmup: 10838/50000JIT success (46.8ms): presence@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:46 -> /tmp/_ruby_mjit_p5340u67.c
+Warmup: 11464/50000JIT success (795.7ms): default@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/hash_with_indifferent_access.rb:206 -> /tmp/_ruby_mjit_p5340u69.c
+Warmup: 11529/50000JIT success (88.3ms): script_name@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:129 -> /tmp/_ruby_mjit_p5340u68.c
+Warmup: 11545/50000JIT success (27.9ms): to_s@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/string/output_safety.rb:214 -> /tmp/_ruby_mjit_p5340u70.c
+Warmup: 11694/50000JIT success (240.8ms): scheme@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:188 -> /tmp/_ruby_mjit_p5340u71.c
+Warmup: 11838/50000JIT success (207.4ms): forwarded_scheme@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/rack-2.0.6/lib/rack/request.rb:483 -> /tmp/_ruby_mjit_p5340u72.c
+Warmup: 12735/50000JIT success (1092.5ms): to_s@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/numeric/conversions.rb:104 -> /tmp/_ruby_mjit_p5340u73.c
+Warmup: 12790/50000JIT success (75.4ms): value@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activemodel-5.2.2.1/lib/active_model/attribute.rb:40 -> /tmp/_ruby_mjit_p5340u74.c
+Warmup: 13479/50000JIT success (861.8ms): add@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/logger.rb:87 -> /tmp/_ruby_mjit_p5340u75.c
+Warmup: 13848/50000JIT success (455.4ms): add@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:455 -> /tmp/_ruby_mjit_p5340u76.c
+Warmup: 13913/50000JIT success (84.2ms): config@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:146 -> /tmp/_ruby_mjit_p5340u90.c
+Warmup: 13965/50000JIT success (71.3ms): format_severity@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:577 -> /tmp/_ruby_mjit_p5340u77.c
+Warmup: 14059/50000JIT success (132.1ms): lookup_context@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionview-5.2.2.1/lib/action_view/view_paths.rb:40 -> /tmp/_ruby_mjit_p5340u89.c
+Warmup: 14098/50000JIT success (62.5ms): format_message@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:581 -> /tmp/_ruby_mjit_p5340u78.c
+Warmup: 14753/50000JIT success (827.8ms): call@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:22 -> /tmp/_ruby_mjit_p5340u79.c
+Warmup: 14849/50000JIT success (125.3ms): tags_text@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:53 -> /tmp/_ruby_mjit_p5340u80.c
+Warmup: 14879/50000JIT success (42.3ms): block in tags_text@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:56 -> /tmp/_ruby_mjit_p5340u81.c
+Warmup: 14965/50000JIT success (135.2ms): call@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:596 -> /tmp/_ruby_mjit_p5340u82.c
+Warmup: 14994/50000JIT success (53.7ms): format_datetime@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:603 -> /tmp/_ruby_mjit_p5340u83.c
+Warmup: 15067/50000JIT success (120.6ms): msg2str@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:607 -> /tmp/_ruby_mjit_p5340u84.c
+Warmup: 15124/50000JIT success (105.0ms): write@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:684 -> /tmp/_ruby_mjit_p5340u85.c
+Warmup: 15164/50000JIT success (61.1ms): block in write@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/2.7.0/logger.rb:686 -> /tmp/_ruby_mjit_p5340u86.c
+Warmup: 15221/50000JIT success (95.7ms): committed?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:219 -> /tmp/_ruby_mjit_p5340u87.c
+Warmup: 15240/50000JIT success (29.2ms): block in committed?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:219 -> /tmp/_ruby_mjit_p5340u88.c
+Warmup: 15286/50000JIT success (90.2ms): load_for_read!@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:212 -> /tmp/_ruby_mjit_p5340u91.c
+Warmup: 15323/50000JIT success (54.3ms): get_header@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/response.rb:181 -> /tmp/_ruby_mjit_p5340u93.c
+Warmup: 15357/50000JIT success (69.3ms): block in extract!@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/slice.rb:46 -> /tmp/_ruby_mjit_p5340u92.c
+Warmup: 15386/50000JIT success (44.4ms): []@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:48 -> /tmp/_ruby_mjit_p5340u94.c
+Warmup: 15420/50000JIT success (53.0ms): get_or_default@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/concurrent-ruby-1.1.5/lib/concurrent/collection/map/non_concurrent_map_backend.rb:108 -> /tmp/_ruby_mjit_p5340u95.c
+Warmup: 15768/50000JIT success (484.5ms): fetch@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/concurrent-ruby-1.1.5/lib/concurrent/map.rb:168 -> /tmp/_ruby_mjit_p5340u96.c
+Warmup: 15825/50000JIT success (82.2ms): blank?@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:122 -> /tmp/_ruby_mjit_p5340u97.c
+Warmup: 15895/50000JIT success (98.1ms): owner_to_pool@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:1054 -> /tmp/_ruby_mjit_p5340u98.c
+Warmup: 15969/50000JIT success (109.8ms): connection_handler@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activerecord-5.2.2.1/lib/active_record/core.rb:130 -> /tmp/_ruby_mjit_p5340u99.c
+Warmup: 16008/50000JIT success (53.1ms): connection_handler@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activerecord-5.2.2.1/lib/active_record/runtime_registry.rb:20 -> /tmp/_ruby_mjit_p5340u100.c
+Warmup: 16037/50000JIT success (55.0ms): start@/home/k0kubun/.rbenv/versions/ruby-svn/lib/ruby/gems/2.7.0/gems/activesupport-5.2.2.1/lib/active_support/notifications/instrumenter.rb:34 -> /tmp/_ruby_mjit_p5340u101.c
+Warmup: 16051/50000JIT compaction (23.7ms): Compacted 100 methods -> /tmp/_ruby_mjit_p5340u990.so
 Warmup: 50000 requests
 Benchmarking 10000 requests...
-JIT success (135.1ms): names@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:57 -> /tmp/_ruby_mjit_p17183u1507.c
-JIT success (197.9ms): normalize_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/router/utils.rb:17 -> /tmp/_ruby_mjit_p17183u1484.c
-JIT success (248.6ms): routes@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/engine.rb:534 -> /tmp/_ruby_mjit_p17183u1113.c
-JIT success (233.7ms): base_class@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/inheritance.rb:95 -> /tmp/_ruby_mjit_p17183u1333.c
-JIT success (194.9ms): mon_initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:257 -> /tmp/_ruby_mjit_p17183u870.c
-JIT success (64.3ms): abstract_class?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/inheritance.rb:151 -> /tmp/_ruby_mjit_p17183u1710.c
-JIT success (79.1ms): request_class@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/routing/route_set.rb:403 -> /tmp/_ruby_mjit_p17183u1551.c
-JIT success (124.5ms): offsets@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/path/pattern.rb:177 -> /tmp/_ruby_mjit_p17183u1644.c
-JIT success (161.3ms): mon_enter@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:11 -> /tmp/_ruby_mjit_p17183u1762.c
-JIT success (739.1ms): method_missing@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/string_inquirer.rb:26 -> /tmp/_ruby_mjit_p17183u1055.c
-JIT success (169.6ms): mon_try_enter@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:170 -> /tmp/_ruby_mjit_p17183u1763.c
-JIT success (740.1ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:250 -> /tmp/_ruby_mjit_p17183u1052.c
-JIT success (21.8ms): block (2 levels) in class_attribute@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/class/attribute.rb:96 -> /tmp/_ruby_mjit_p17183u1227.c
-JIT success (34.3ms): start@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/explain_subscriber.rb:8 -> /tmp/_ruby_mjit_p17183u1760.c
-JIT success (472.1ms): sql@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:20 -> /tmp/_ruby_mjit_p17183u1774.c
-JIT success (103.9ms): debug?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/logger.rb:94 -> /tmp/_ruby_mjit_p17183u1776.c
-JIT success (132.3ms): finish@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/explain_subscriber.rb:12 -> /tmp/_ruby_mjit_p17183u1777.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): collect?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/per_thread_registry.rb:55 -> /tmp/_ruby_mjit_p17183u1778.c
-JIT success (22.7ms): collect?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/explain_registry.rb:23 -> /tmp/_ruby_mjit_p17183u1779.c
-JIT success (796.2ms): action_methods@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/abstract_controller/url_for.rb:24 -> /tmp/_ruby_mjit_p17183u1427.c
-JIT success (54.5ms): except@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/except.rb:12 -> /tmp/_ruby_mjit_p17183u1342.c
-JIT success (89.0ms): except!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/hash/except.rb:20 -> /tmp/_ruby_mjit_p17183u1343.c
-JIT success (38.5ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/delegate.rb:71 -> /tmp/_ruby_mjit_p17183u1821.c
-JIT success (75.9ms): __setobj__@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/delegate.rb:399 -> /tmp/_ruby_mjit_p17183u1822.c
-JIT success (114.6ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_type.rb:40 -> /tmp/_ruby_mjit_p17183u1922.c
-JIT success (51.4ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:18 -> /tmp/_ruby_mjit_p17183u1409.c
-JIT success (97.1ms): typecast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:89 -> /tmp/_ruby_mjit_p17183u1410.c
-JIT success (69.9ms): table_name@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/model_schema.rb:179 -> /tmp/_ruby_mjit_p17183u1873.c
-JIT success (81.0ms): lookup_by_extension@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_type.rb:148 -> /tmp/_ruby_mjit_p17183u1923.c
-JIT success (83.4ms): new_cipher@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/message_encryptor.rb:209 -> /tmp/_ruby_mjit_p17183u1704.c
-JIT success (49.0ms): []@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/template/types.rb:48 -> /tmp/_ruby_mjit_p17183u1977.c
-JIT success (53.0ms): to_ary@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:27 -> /tmp/_ruby_mjit_p17183u2013.c
-JIT success (125.4ms): block in typecast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionview-5.2.2.1/lib/action_view/path_set.rb:90 -> /tmp/_ruby_mjit_p17183u2014.c
-JIT success (33.8ms): strict_decode64@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/base64.rb:73 -> /tmp/_ruby_mjit_p17183u2065.c
-JIT success (79.4ms): id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:71 -> /tmp/_ruby_mjit_p17183u2078.c
-JIT success (87.0ms): id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:52 -> /tmp/_ruby_mjit_p17183u2079.c
-JIT success (62.9ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/cache.rb:183 -> /tmp/_ruby_mjit_p17183u2086.c
-JIT success (51.1ms): simulator@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/router.rb:98 -> /tmp/_ruby_mjit_p17183u2091.c
-JIT success (223.0ms): simulator@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/journey/routes.rb:58 -> /tmp/_ruby_mjit_p17183u2092.c
-JIT success (70.9ms): new_cond@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:241 -> /tmp/_ruby_mjit_p17183u2102.c
-JIT success (99.8ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/monitor.rb:156 -> /tmp/_ruby_mjit_p17183u2103.c
-JIT success (32.2ms): default_formats@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/module/attribute_accessors.rb:60 -> /tmp/_ruby_mjit_p17183u2111.c
-JIT success (40.0ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/parameter_filter.rb:10 -> /tmp/_ruby_mjit_p17183u2113.c
-JIT success (114.5ms): compile@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:563 -> /tmp/_ruby_mjit_p17183u2116.c
-JIT success (31.5ms): final?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:504 -> /tmp/_ruby_mjit_p17183u2117.c
-JIT success (99.5ms): invoke_before@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:512 -> /tmp/_ruby_mjit_p17183u2118.c
-JIT success (149.8ms): type_casted_binds@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/quoting.rb:141 -> /tmp/_ruby_mjit_p17183u2122.c
-JIT success (24.1ms): to_s@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/mime_type.rb:232 -> /tmp/_ruby_mjit_p17183u2207.c
-MJIT warning: Skipped to compile unsupported instruction: opt_call_c_function
-JIT failure (0.0ms): value=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:159 -> /tmp/_ruby_mjit_p17183u2208.c
-JIT success (88.4ms): invoke_after@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:516 -> /tmp/_ruby_mjit_p17183u2209.c
-JIT success (37.2ms): block in id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:53 -> /tmp/_ruby_mjit_p17183u2212.c
-JIT success (94.7ms): extract_session_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/cookie_store.rb:76 -> /tmp/_ruby_mjit_p17183u2213.c
-JIT success (51.9ms): block in extract_session_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/cookie_store.rb:77 -> /tmp/_ruby_mjit_p17183u2214.c
-JIT success (93.2ms): use_authenticated_cookie_encryption@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/cookies.rb:52 -> /tmp/_ruby_mjit_p17183u2222.c
-JIT success (71.6ms): app@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/engine.rb:505 -> /tmp/_ruby_mjit_p17183u2226.c
-JIT success (48.3ms): default_locale@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/i18n-1.6.0/lib/i18n.rb:54 -> /tmp/_ruby_mjit_p17183u2227.c
-JIT success (105.4ms): block in expand@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:404 -> /tmp/_ruby_mjit_p17183u2228.c
-JIT success (71.0ms): current_scope@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/scoping.rb:15 -> /tmp/_ruby_mjit_p17183u2229.c
-MJIT warning: Skipped to compile unsupported instruction: getblockparamproxy
-JIT failure (0.0ms): value_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/per_thread_registry.rb:55 -> /tmp/_ruby_mjit_p17183u2230.c
-JIT success (145.0ms): value_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/scoping.rb:79 -> /tmp/_ruby_mjit_p17183u2231.c
-JIT success (121.6ms): raise_invalid_scope_type!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/scoping.rb:99 -> /tmp/_ruby_mjit_p17183u2232.c
-JIT success (45.7ms): columns_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/model_schema.rb:335 -> /tmp/_ruby_mjit_p17183u2233.c
-JIT success (51.3ms): ===@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/core.rb:250 -> /tmp/_ruby_mjit_p17183u2234.c
-JIT success (87.1ms): arel_from_relation@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/database_statements.rb:490 -> /tmp/_ruby_mjit_p17183u2235.c
-JIT success (154.0ms): to_sql_and_binds@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/abstract/database_statements.rb:17 -> /tmp/_ruby_mjit_p17183u2236.c
-JIT success (21.0ms): type_cast@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/relation/query_attribute.rb:8 -> /tmp/_ruby_mjit_p17183u2239.c
-JIT success (157.6ms): columns_hash@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activerecord-5.2.2.1/lib/active_record/connection_adapters/schema_cache.rb:74 -> /tmp/_ruby_mjit_p17183u2240.c
-JIT success (29.9ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activemodel-5.2.2.1/lib/active_model/attribute_set.rb:11 -> /tmp/_ruby_mjit_p17183u2241.c
-JIT success (42.0ms): request_forgery_protection_token@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/configurable.rb:23 -> /tmp/_ruby_mjit_p17183u2242.c
-JIT success (43.8ms): block in invoke_after@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/callbacks.rb:517 -> /tmp/_ruby_mjit_p17183u2243.c
-JIT success (64.7ms): blank?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/core_ext/object/blank.rb:19 -> /tmp/_ruby_mjit_p17183u2244.c
-JIT success (53.9ms): cookie_jar@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/cookie_store.rb:113 -> /tmp/_ruby_mjit_p17183u2245.c
-JIT success (110.9ms): signed_or_encrypted@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/cookies.rb:251 -> /tmp/_ruby_mjit_p17183u2246.c
-JIT success (23.6ms): verifier@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/message_encryptor.rb:213 -> /tmp/_ruby_mjit_p17183u2247.c
-JIT success (74.1ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/engine.rb:522 -> /tmp/_ruby_mjit_p17183u2248.c
-JIT success (727.2ms): build_request@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/application.rb:606 -> /tmp/_ruby_mjit_p17183u2249.c
-JIT success (161.2ms): build_request@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/engine.rb:693 -> /tmp/_ruby_mjit_p17183u2250.c
-JIT success (1244.5ms): env_config@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/application.rb:247 -> /tmp/_ruby_mjit_p17183u2251.c
-JIT success (41.5ms): routes=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:142 -> /tmp/_ruby_mjit_p17183u2252.c
-JIT success (84.0ms): engine_script_name=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:150 -> /tmp/_ruby_mjit_p17183u2253.c
-JIT success (483.9ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/sendfile.rb:110 -> /tmp/_ruby_mjit_p17183u2254.c
-JIT success (187.9ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/executor.rb:11 -> /tmp/_ruby_mjit_p17183u2255.c
-JIT success (149.9ms): run!@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/execution_wrapper.rb:65 -> /tmp/_ruby_mjit_p17183u2256.c
-JIT success (88.9ms): active?@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/execution_wrapper.rb:104 -> /tmp/_ruby_mjit_p17183u2257.c
-JIT success (281.0ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/cache/strategy/local_cache_middleware.rb:27 -> /tmp/_ruby_mjit_p17183u2258.c
-JIT success (710.2ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/cache/strategy/local_cache.rb:39 -> /tmp/_ruby_mjit_p17183u2259.c
-JIT success (50.5ms): set_cache_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/cache/strategy/local_cache.rb:32 -> /tmp/_ruby_mjit_p17183u2260.c
-JIT success (50.0ms): set_cache_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/cache/strategy/local_cache.rb:28 -> /tmp/_ruby_mjit_p17183u2261.c
-JIT success (241.0ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/runtime.rb:20 -> /tmp/_ruby_mjit_p17183u2262.c
-JIT success (236.1ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/method_override.rb:13 -> /tmp/_ruby_mjit_p17183u2263.c
-JIT success (55.3ms): allowed_methods@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/method_override.rb:38 -> /tmp/_ruby_mjit_p17183u2264.c
-JIT success (208.2ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/request_id.rb:24 -> /tmp/_ruby_mjit_p17183u2265.c
-JIT success (45.3ms): x_request_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2266.c
-JIT success (87.8ms): make_request_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/request_id.rb:31 -> /tmp/_ruby_mjit_p17183u2267.c
-JIT success (70.7ms): internal_request_id@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/request_id.rb:39 -> /tmp/_ruby_mjit_p17183u2268.c
-JIT success (80.0ms): uuid@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/2.6.0/securerandom.rb:233 -> /tmp/_ruby_mjit_p17183u2269.c
-JIT success (88.9ms): request_id=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:298 -> /tmp/_ruby_mjit_p17183u2270.c
-JIT success (192.9ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:78 -> /tmp/_ruby_mjit_p17183u2271.c
-JIT success (43.1ms): initialize@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:88 -> /tmp/_ruby_mjit_p17183u2272.c
-JIT success (56.7ms): remote_ip=@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:282 -> /tmp/_ruby_mjit_p17183u2273.c
-JIT success (225.0ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:22 -> /tmp/_ruby_mjit_p17183u2274.c
-JIT success (91.4ms): compute_tags@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:57 -> /tmp/_ruby_mjit_p17183u2275.c
-JIT success (120.9ms): block in compute_tags@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:58 -> /tmp/_ruby_mjit_p17183u2276.c
-JIT success (98.4ms): tagged@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:70 -> /tmp/_ruby_mjit_p17183u2277.c
-JIT success (319.1ms): tagged@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:26 -> /tmp/_ruby_mjit_p17183u2278.c
-JIT success (105.4ms): push_tags@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:33 -> /tmp/_ruby_mjit_p17183u2279.c
-JIT success (57.0ms): block in push_tags@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:34 -> /tmp/_ruby_mjit_p17183u2280.c
-JIT success (279.0ms): block in tagged@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/activesupport-5.2.2.1/lib/active_support/tagged_logging.rb:71 -> /tmp/_ruby_mjit_p17183u2281.c
-JIT success (43.0ms): block in call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:26 -> /tmp/_ruby_mjit_p17183u2282.c
-JIT success (303.4ms): call_app@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:34 -> /tmp/_ruby_mjit_p17183u2283.c
-JIT success (38.7ms): block in call_app@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:37 -> /tmp/_ruby_mjit_p17183u2284.c
-JIT success (152.4ms): started_request_message@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/railties-5.2.2.1/lib/rails/rack/logger.rb:49 -> /tmp/_ruby_mjit_p17183u2285.c
-JIT success (137.8ms): filtered_path@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/filter_parameters.rb:52 -> /tmp/_ruby_mjit_p17183u2286.c
-JIT success (95.7ms): remote_ip@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:278 -> /tmp/_ruby_mjit_p17183u2287.c
-JIT success (69.1ms): to_s@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:154 -> /tmp/_ruby_mjit_p17183u2288.c
-JIT success (337.3ms): calculate_ip@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:112 -> /tmp/_ruby_mjit_p17183u2289.c
-JIT success (40.1ms): client_ip@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2290.c
-JIT success (59.3ms): x_forwarded_for@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/http/request.rb:49 -> /tmp/_ruby_mjit_p17183u2291.c
-JIT success (90.0ms): filter_proxies@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/remote_ip.rb:176 -> /tmp/_ruby_mjit_p17183u2292.c
-JIT success (107.6ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/show_exceptions.rb:31 -> /tmp/_ruby_mjit_p17183u2293.c
-JIT success (281.6ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/debug_exceptions.rb:59 -> /tmp/_ruby_mjit_p17183u2294.c
-JIT success (107.5ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/callbacks.rb:24 -> /tmp/_ruby_mjit_p17183u2295.c
-JIT success (48.5ms): block in call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/callbacks.rb:26 -> /tmp/_ruby_mjit_p17183u2296.c
-JIT success (278.0ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/cookies.rb:667 -> /tmp/_ruby_mjit_p17183u2297.c
-JIT success (34.0ms): call@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:225 -> /tmp/_ruby_mjit_p17183u2298.c
-JIT success (211.3ms): context@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:229 -> /tmp/_ruby_mjit_p17183u2299.c
-JIT success (81.7ms): make_request@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/abstract_store.rb:39 -> /tmp/_ruby_mjit_p17183u2300.c
-JIT success (103.7ms): prepare_session@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/middleware/session/abstract_store.rb:71 -> /tmp/_ruby_mjit_p17183u2301.c
-JIT success (225.8ms): create@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:16 -> /tmp/_ruby_mjit_p17183u2302.c
 
-Request per second: 538.6 [#/s] (mean)
-JIT success (76.0ms): find@/home/k0kubun/.rbenv/versions/2.6.2/lib/ruby/gems/2.6.0/gems/actionpack-5.2.2.1/lib/action_dispatch/request/session.rb:26 -> /tmp/_ruby_mjit_p17183u2303.c
+Request per second: 818.3 [#/s] (mean)
 Successful MJIT finish
-
-$ stackprof stackprof-2019-03-17_12:33:23_+0900.dump
+/home/k0kubun/src/github.com/k0kubun/railsbench † bionic status: 0                                                            (git)-[master]-
+$ stackprof stackprof-2019-03-17_17:51:33_+0900.dump
 ==================================
   Mode: wall(100)
-  Samples: 183366 (0.92% miss rate)
-  GC: 10150 (5.54%)
+  Samples: 121143 (0.61% miss rate)
+  GC: 5436 (4.49%)
 ==================================
      TOTAL    (pct)     SAMPLES    (pct)     FRAME
-     10150   (5.5%)       10150   (5.5%)     (garbage collection)
-      7844   (4.3%)        7844   (4.3%)     Concurrent::Collection::NonConcurrentMapBackend#[]
-      5900   (3.2%)        5900   (3.2%)     Rack::Request::Env#get_header
-      6177   (3.4%)        4574   (2.5%)     Logger::LogDevice#write
-      4519   (2.5%)        4519   (2.5%)     Logger::Formatter#format_datetime
-      2970   (1.6%)        2970   (1.6%)     ActiveSupport::SafeBuffer#initialize
-      3638   (2.0%)        2744   (1.5%)     block (2 levels) in class_attribute
-      2226   (1.2%)        2226   (1.2%)     ActiveSupport::InheritableOptions#initialize
-      2150   (1.2%)        2150   (1.2%)     Rack::Request::Env#fetch_header
-      2097   (1.1%)        2097   (1.1%)     block (4 levels) in class_attribute
-      7179   (3.9%)        1926   (1.1%)     Logger::Formatter#call
-      1847   (1.0%)        1847   (1.0%)     ActiveSupport::PerThreadRegistry#instance
-      1794   (1.0%)        1794   (1.0%)     ActionDispatch::Http::FilterParameters#initialize
-      2787   (1.5%)        1779   (1.0%)     ActionView::Helpers::TagHelper::TagBuilder#tag_option
-      1737   (0.9%)        1737   (0.9%)     MonitorMixin#mon_enter
-      1583   (0.9%)        1583   (0.9%)     ActiveSupport::Configurable::ClassMethods#config
-      1501   (0.8%)        1501   (0.8%)     ActiveModel::Attribute#initialize
-      1495   (0.8%)        1495   (0.8%)     Rack::Utils::HeaderHash#[]=
-      1454   (0.8%)        1454   (0.8%)     #<Class:0x0000555780693958>#__getobj__
-      1446   (0.8%)        1446   (0.8%)     Set#include?
-      1425   (0.8%)        1425   (0.8%)     #<Module:0x000055577f015b18>.encode_www_form_component
-      1412   (0.8%)        1412   (0.8%)     ActiveRecord::Base.logger
-      1261   (0.7%)        1261   (0.7%)     ActiveSupport::TaggedLogging::Formatter#current_tags
-      1184   (0.6%)        1184   (0.6%)     ActiveSupport::HashWithIndifferentAccess#update
-     23140  (12.6%)        1160   (0.6%)     Logger#add
-      1153   (0.6%)        1153   (0.6%)     ActiveSupport::HashWithIndifferentAccess#convert_key
-      1903   (1.0%)        1130   (0.6%)     ActiveModel::Attribute#hash
-      1127   (0.6%)        1127   (0.6%)     ActiveSupport::Callbacks::CallTemplate#expand
-      1933   (1.1%)        1112   (0.6%)     ActiveSupport::TaggedLogging::Formatter#tags_text
-      1201   (0.7%)        1103   (0.6%)     ActionDispatch::Http::ParameterFilter::CompiledFilter.compile
+      5890   (4.9%)        5890   (4.9%)     Concurrent::Collection::NonConcurrentMapBackend#[]
+      5436   (4.5%)        5436   (4.5%)     (garbage collection)
+      3903   (3.2%)        3903   (3.2%)     Logger::Formatter#format_datetime
+      4990   (4.1%)        3556   (2.9%)     Logger::LogDevice#write
+      3307   (2.7%)        3307   (2.7%)     Rack::Request::Env#get_header
+      2384   (2.0%)        2384   (2.0%)     ActiveSupport::SafeBuffer#initialize
+      6335   (5.2%)        1773   (1.5%)     Logger::Formatter#call
+      2330   (1.9%)        1619   (1.3%)     block (2 levels) in class_attribute
+      1444   (1.2%)        1444   (1.2%)     block (4 levels) in class_attribute
+      1949   (1.6%)        1261   (1.0%)     ActionView::Helpers::TagHelper::TagBuilder#tag_option
+      1254   (1.0%)        1254   (1.0%)     ActiveSupport::PerThreadRegistry#instance
+      1231   (1.0%)        1231   (1.0%)     ActionDispatch::Http::FilterParameters#initialize
+      1226   (1.0%)        1226   (1.0%)     Rack::Utils::HeaderHash#[]=
+      1219   (1.0%)        1219   (1.0%)     Rack::Request::Env#fetch_header
+      1188   (1.0%)        1188   (1.0%)     ActiveSupport::InheritableOptions#initialize
+      1187   (1.0%)        1187   (1.0%)     ActiveSupport::Configurable::ClassMethods#config
+      1131   (0.9%)        1131   (0.9%)     MonitorMixin#mon_enter
+      1264   (1.0%)         984   (0.8%)     ActionView::LogSubscriber#from_rails_root
+       953   (0.8%)         953   (0.8%)     ActionDispatch::Response#parse_content_type
+       944   (0.8%)         944   (0.8%)     #<Module:0x0000561544a19168>.encode_www_form_component
+     18841  (15.6%)         933   (0.8%)     Logger#add
+       908   (0.7%)         908   (0.7%)     ActiveSupport::TaggedLogging::Formatter#current_tags
+       900   (0.7%)         900   (0.7%)     Set#include?
+       889   (0.7%)         889   (0.7%)     ActiveModel::Attribute#initialize
+      1503   (1.2%)         865   (0.7%)     ActiveSupport::TaggedLogging::Formatter#tags_text
+       840   (0.7%)         840   (0.7%)     ActiveSupport::HashWithIndifferentAccess#convert_key
+      1471   (1.2%)         832   (0.7%)     ActiveModel::Attribute#hash
+       830   (0.7%)         830   (0.7%)     #<Class:0x0000561545c7a578>#__getobj__
+       828   (0.7%)         828   (0.7%)     ActiveRecord::Base.logger
+       781   (0.6%)         781   (0.6%)     MonitorMixin#mon_enter
 ```
 
 ## License
