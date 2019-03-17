@@ -2,6 +2,7 @@
 
 # Usage:
 #   WARMUP=0 BENCHMARK=10000 bin/bench
+#   PROFILE=wall INTERVAL=100 WARMUP=1 BENCHMARK=1000 bin/bench
 
 ENV['RAILS_ENV'] ||= 'production'
 require_relative '../config/boot'
@@ -19,14 +20,7 @@ class Bench
     app = Rails.application
     env = @env
     clock = Process::CLOCK_MONOTONIC
-
-    i = 0
-    while i < @warmup
-      app.call(env)
-      i += 1
-      print "\rWarmup: #{i}/#{@warmup}"
-    end
-    puts "\rWarmup: #{@warmup} requests" if i > 0
+    warmup(app, env)
 
     durations = []
     i = 0
@@ -46,7 +40,39 @@ class Bench
     show_percentiles(durations)
   end
 
+  def profile(mode:, interval:)
+    require 'stackprof'
+    app = Rails.application
+    env = @env
+    warmup(app, env)
+
+    puts "Benchmarking #{@benchmark} requests..."
+    benchmark = @benchmark
+    started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    StackProf.run(mode: :wall, interval: interval, out: "stackprof-#{Time.now.to_s.gsub(/ /, '_')}.dump") do
+      i = 0
+      while i < benchmark
+        app.call(env)
+        i += 1
+      end
+    end
+    duration = Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at
+
+    puts
+    puts "Request per second: #{'%.1f' % (@benchmark / duration)} [#/s] (mean)"
+  end
+
   private
+
+  def warmup(app, env)
+    i = 0
+    while i < @warmup
+      app.call(env)
+      i += 1
+      print "\rWarmup: #{i}/#{@warmup}"
+    end
+    puts "\rWarmup: #{@warmup} requests" if i > 0
+  end
 
   def show_percentiles(durations)
     percentiles = [50, 66, 75, 80, 90, 95, 98, 99, 100]
@@ -74,4 +100,11 @@ bench = Bench.new(
   benchmark: Integer(ENV.fetch('BENCHMARK', 10000)),
   path: ARGV.first || '/posts/1',
 )
-bench.measure
+if ENV.key?('PROFILE')
+  bench.profile(
+    mode: ENV['PROFILE'].to_sym,
+    interval: Integer(ENV.fetch('INTERVAL', 100)),
+  )
+else
+  bench.measure
+end
