@@ -74,7 +74,43 @@ ab -c 4 -n 10000 localhost:3000/posts/1
 ab -c 4 -n 10000 localhost:3000/posts/1.json
 ```
 
-## Benchmark Results
+## 50k Benchmark Results
+
+Here is the benchmark result on: Intel 4.0GHz i7-4790K, 16GB memory, x86-64 Ubuntu 8 Cores
+
+[JRuby claims to be faster than MRI when after 50k requests](https://speakerdeck.com/headius/jruby-2018-real-world-performance?slide=49)
+with a single post read.
+This part measures results with following steps:
+
+* Restart puma
+* Run `ab -n 50000` as warmup
+* Run `ab -n 10000` as benchmark
+
+See [log/benchmark\_50k](./log/benchmark_50k) for details.
+
+### GET /posts/1
+
+The following table is showing response time milliseconds for each %ile in the last 10,000 requests.
+
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:---------------|:-------------------|
+| 50%  |  2 |  4 |  3 |
+| 66%  |  2 |  5 |  3 |
+| 75%  |  3 |  5 |  3 |
+| 80%  |  3 |  6 |  3 |
+| 90%  |  3 |  8 |  3 |
+| 95%  |  3 | 10 |  4 |
+| 98%  |  6 | 15 |  5 |
+| 99%  | 10 | 17 |  6 |
+|100%  | 54 | 37 | 15 |
+
+The following table is showing # of requests per second (mean).
+
+|      | Ruby 2.6.2 | Ruby 2.6.2 JIT | JRuby 9.2.6.0 indy |
+|:-----|:-----------|:---------------|:-------------------|
+| #/s  | 1653.11 | 744.18 | 1335.05 |
+
+## 10k Benchmark Results
 
 Here is the benchmark result on: Intel 4.0GHz i7-4790K, 16GB memory, x86-64 Ubuntu 8 Cores
 
@@ -142,61 +178,6 @@ See [log/benchmark](./log/benchmark) for details.
 | 98%  | 6 | 17 | 19 | 13 | 10 |
 | 99%  |11 | 21 | 19 | 16 | 12 |
 |100%  |29 | 29 | 28 | 20 | 15 |
-
-## 50k Benchmark Results
-
-[JRuby claims to be faster than MRI when after 50k requests](https://speakerdeck.com/headius/jruby-2018-real-world-performance?slide=49).
-This part measures results with following steps:
-
-* Restart puma
-* Run `ab -n 50000` as warmup
-* Run `ab -n 10000` as benchmark
-
-See [log/benchmark\_50k](./log/benchmark_50k) for details.
-
-### GET /posts
-
-The following table is showing response time milliseconds for each %ile in the last 10,000 requests.
-
-|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
-|:-----|:-----------|:-------------------|
-| 50%  | 11 | 11 |
-| 66%  | 12 | 11 |
-| 75%  | 15 | 11 |
-| 80%  | 16 | 13 |
-| 90%  | 18 | 17 |
-| 95%  | 23 | 18 |
-| 98%  | 28 | 18 |
-| 99%  | 33 | 20 |
-|100%  | 62 | 27 |
-
-The following table is showing # of requests per second (mean).
-
-|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
-|:-----|:-----------|:-------------------|
-| #/s  | 295.98 | 327.68 |
-
-### GET /posts/1
-
-The following table is showing response time milliseconds for each %ile in the last 10,000 requests.
-
-|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
-|:-----|:-----------|:-------------------|
-| 50%  |  2 |  3 |
-| 66%  |  2 |  3 |
-| 75%  |  3 |  3 |
-| 80%  |  3 |  3 |
-| 90%  |  3 |  3 |
-| 95%  |  3 |  3 |
-| 98%  |  6 |  5 |
-| 99%  | 10 |  6 |
-|100%  | 54 | 14 |
-
-The following table is showing # of requests per second (mean).
-
-|      | Ruby 2.6.2 | JRuby 9.2.6.0 indy |
-|:-----|:-----------|:-------------------|
-| #/s  | 1653.11 | 1377.71 |
 
 ## License
 
