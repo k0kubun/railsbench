@@ -49,14 +49,14 @@ class Bench
     puts "Benchmarking #{@benchmark} requests..."
     benchmark = @benchmark
     started_at = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-    StackProf.run(mode: :wall, interval: interval, out: "stackprof-#{Time.now.to_s.gsub(/ /, '_')}.dump") do
-      i = 0
-      while i < benchmark
-        app.call(env)
-        i += 1
-      end
+    result = StackProf.run(raw: true, mode: mode, interval: interval) do
+      app.call(env)
     end
     duration = Process.clock_gettime(Process::CLOCK_MONOTONIC) - started_at
+
+    File.open('data.js', 'w') do |f|
+      StackProf::Report.new(result).print_flamegraph(f)
+    end
 
     puts
     puts "Request per second: #{'%.1f' % (@benchmark / duration)} [#/s] (mean)"
