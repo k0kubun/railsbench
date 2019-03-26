@@ -18,15 +18,16 @@ Make sure config/database.yml works for your local PostgreSQL.
 Replace "k0kubun" with your $USER in the following instructions.
 
 ```bash
+# Linux
 sudo apt install postgresql
-
 sudo -u postgres psql
 postgres=$ create role k0kubun superuser;
-
-# Add `local all k0kubun trust`
-sudo vi /etc/postgresql/10/main/pg_hba.conf
-
+sudo vi /etc/postgresql/10/main/pg_hba.conf # Add `local all k0kubun trust`
 sudo systemctl restart postgresql
+
+# macOS
+brew install postgresql
+createdb railsbench_production
 ```
 
 Populate database and assets for `RAILS_ENV=production`.
