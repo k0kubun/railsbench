@@ -14,6 +14,11 @@ class Bench
     @warmup = warmup
     @benchmark = benchmark
     @env = Rack::MockRequest.env_for(path, method: Rack::GET)
+
+    status, _, body = Rails.application.call(@env)
+    if status != 200
+      abort "===\n#{body.join}===\nExpected status to be 200 but got #{status}."
+    end
   end
 
   def measure
