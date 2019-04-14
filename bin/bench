@@ -26,6 +26,9 @@ class Bench
     env = @env
     clock = Process::CLOCK_MONOTONIC
     warmup(app, env)
+    if RubyVM.respond_to?(:reset_debug_counters)
+      RubyVM.reset_debug_counters
+    end
 
     durations = []
     i = 0
@@ -70,13 +73,14 @@ class Bench
   private
 
   def warmup(app, env)
+    puts "Warming up..."
     i = 0
     while i < @warmup
       app.call(env)
       i += 1
-      print "\rWarmup: #{i}/#{@warmup}"
+      #print "\rWarmup: #{i}/#{@warmup}"
     end
-    puts "\rWarmup: #{@warmup} requests" if i > 0
+    #puts "\rWarmup: #{@warmup} requests" if i > 0
   end
 
   def show_percentiles(durations)
