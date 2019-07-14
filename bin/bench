@@ -30,6 +30,9 @@ class Bench
       RubyVM.reset_debug_counters
     end
 
+    if use_perf = ENV.key?('PERF')
+      pid = Process.spawn('perf', 'stat', '-p', Process.pid.to_s, '-e', 'task-clock,cycles,instructions,branches,branch-misses,cache-misses,cache-references,l1d_pend_miss.pending_cycles,l1d_pend_miss.pending_cycles_any,l2_rqsts.all_code_rd,l2_rqsts.code_rd_hit,dsb2mite_switches.penalty_cycles,icache.hit,icache.ifdata_stall,icache.ifetch_stall,icache.misses,idq.all_dsb_cycles_4_uops,idq.all_dsb_cycles_any_uops,idq.all_mite_cycles_4_uops,idq.all_mite_cycles_any_uops,idq.dsb_cycles,idq.dsb_uops,l2_rqsts.code_rd_hit,l2_rqsts.code_rd_miss')
+    end
     durations = []
     i = 0
     while i < @benchmark
@@ -40,6 +43,11 @@ class Bench
       i += 1
       print "\rBenchmark: #{i}/#{@benchmark}"
     end
+    if use_perf
+      Process.kill(:INT, pid)
+      Process.wait(pid)
+    end
+
     puts "\rBenchmark: #{@benchmark} requests"
     puts
     puts "Request per second: #{'%.1f' % (@benchmark / durations.inject(&:+))} [#/s] (mean)"
@@ -78,9 +86,9 @@ class Bench
     while i < @warmup
       app.call(env)
       i += 1
-      #print "\rWarmup: #{i}/#{@warmup}"
+      print "\rWarmup: #{i}/#{@warmup} "
     end
-    #puts "\rWarmup: #{@warmup} requests" if i > 0
+    puts "\rWarmup: #{@warmup} requests" if i > 0
   end
 
   def show_percentiles(durations)
