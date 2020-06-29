@@ -26,8 +26,17 @@ class Bench
     env = @env
     clock = Process::CLOCK_MONOTONIC
     warmup(app, env)
-    if RubyVM.respond_to?(:reset_debug_counters)
+    if defined?(RubyVM) && RubyVM.respond_to?(:reset_debug_counters)
       RubyVM.reset_debug_counters
+    end
+    if defined?(RubyVM::MJIT) && RubyVM::MJIT.enabled?
+      RubyVM::MJIT.pause
+      app.call(env.dup) # issue recompile
+      RubyVM::MJIT.resume
+      RubyVM::MJIT.pause # finish recompile
+      app.call(env.dup) # issue recompile
+      RubyVM::MJIT.resume
+      RubyVM::MJIT.pause # finish recompile
     end
 
     if use_perf = ENV.key?('PERF')
@@ -36,8 +45,9 @@ class Bench
     durations = []
     i = 0
     while i < @benchmark
+      dup_env = env.dup
       started_at = Process.clock_gettime(clock)
-      app.call(env)
+      app.call(dup_env)
       durations << Process.clock_gettime(clock) - started_at
 
       i += 1
