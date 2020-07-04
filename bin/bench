@@ -39,9 +39,17 @@ class Bench
       RubyVM::MJIT.pause # finish recompile
     end
 
-    if use_perf = ENV.key?('PERF')
-      pid = Process.spawn('perf', 'stat', '-p', Process.pid.to_s, '-e', 'task-clock,cycles,instructions,branches,branch-misses,cache-misses,cache-references,l1d_pend_miss.pending_cycles,l1d_pend_miss.pending_cycles_any,l2_rqsts.all_code_rd,l2_rqsts.code_rd_hit,dsb2mite_switches.penalty_cycles,icache.hit,icache.ifdata_stall,icache.ifetch_stall,icache.misses,idq.all_dsb_cycles_4_uops,idq.all_dsb_cycles_any_uops,idq.all_mite_cycles_4_uops,idq.all_mite_cycles_any_uops,idq.dsb_cycles,idq.dsb_uops,l2_rqsts.code_rd_hit,l2_rqsts.code_rd_miss')
-    end
+    Process.spawn(
+      '/home/k0kubun/intel/vtune_profiler/bin64/vtune', '-collect',
+
+      #'hotspots', '-run-pass-thru=--no-altstack',
+      #'hotspots', '-knob', 'sampling-mode=hw',
+      'uarch-exploration', #'-knob', 'sampling-interval=0.5',
+      #'memory-access',
+
+      "-user-data-dir=/home/k0kubun/intel/vtune/projects/railsbench-#{RubyVM::MJIT.enabled? ? 'jit' : 'vm'}",
+      "-target-pid=#{Process.pid}",
+    )
     durations = []
     i = 0
     while i < @benchmark
@@ -53,17 +61,8 @@ class Bench
       i += 1
       print "\rBenchmark: #{i}/#{@benchmark}"
     end
-    if use_perf
-      Process.kill(:INT, pid)
-      Process.wait(pid)
-    end
 
-    puts "\rBenchmark: #{@benchmark} requests"
-    puts
     puts "Request per second: #{'%.1f' % (@benchmark / durations.inject(&:+))} [#/s] (mean)"
-    puts
-    puts "Percentage of the requests served within a certain time (ms)"
-    show_percentiles(durations)
   end
 
   def profile(mode:, interval:)
