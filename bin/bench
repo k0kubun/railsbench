@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+puts RUBY_DESCRIPTION
+
 # Usage:
 #   WARMUP=0 BENCHMARK=10000 bin/bench
 #   PROFILE=wall INTERVAL=100 WARMUP=1 BENCHMARK=1000 bin/bench
