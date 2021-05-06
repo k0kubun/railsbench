@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '6.0.3.7'
-gem 'sqlite3'
+gem 'sqlite3', platforms: [:mri, :truffleruby]
+gem 'activerecord-jdbcsqlite3-adapter', platforms: [:jruby]
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
