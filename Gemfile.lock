@@ -119,7 +119,6 @@ GEM
     nio4r (2.5.2-java)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    pg (1.2.3)
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -186,6 +185,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     stackprof (0.2.15)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -229,13 +229,13 @@ DEPENDENCIES
   coffee-rails
   jbuilder
   listen
-  pg
   puma
   rails
   sass-rails
   selenium-webdriver
   spring
   spring-watcher-listen
+  sqlite3
   stackprof
   turbolinks
   tzinfo-data
@@ -243,4 +243,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.2.0.dev
+   2.2.3

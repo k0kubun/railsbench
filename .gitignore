@@ -30,3 +30,4 @@
 /stackprof-*.dump
 /perf.data
 /perf.data.old
+/db/*.sqlite3

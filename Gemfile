@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails'
-gem 'pg', platforms: [:mri, :truffleruby]
+gem 'sqlite3'
 gem 'activerecord-jdbcpostgresql-adapter', platforms: [:jruby]
 gem 'puma'
 gem 'sass-rails'
