@@ -39,6 +39,7 @@ class Bench
       app.call(env.dup) # issue recompile
       RubyVM::MJIT.resume
       RubyVM::MJIT.pause # finish recompile
+      app.call(env.dup)
     end
 
     if use_perf = ENV.key?('PERF')
