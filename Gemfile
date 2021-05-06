@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails'
+gem 'rails', '6.0.3.7'
 gem 'sqlite3'
-gem 'activerecord-jdbcpostgresql-adapter', platforms: [:jruby]
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
