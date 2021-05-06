@@ -45,10 +45,10 @@ GEM
     activerecord (6.0.3.7)
       activemodel (= 6.0.3.7)
       activesupport (= 6.0.3.7)
-    activerecord-jdbc-adapter (50.0)
-      activerecord (>= 2.2)
-    activerecord-jdbcsqlite3-adapter (50.0)
-      activerecord-jdbc-adapter (~> 50.0)
+    activerecord-jdbc-adapter (60.3-java)
+      activerecord (~> 6.0.0)
+    activerecord-jdbcsqlite3-adapter (60.3-java)
+      activerecord-jdbc-adapter (= 60.3)
       jdbc-sqlite3 (~> 3.8, < 3.30)
     activestorage (6.0.3.7)
       actionpack (= 6.0.3.7)
@@ -233,7 +233,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  activerecord-jdbcsqlite3-adapter
+  activerecord-jdbcsqlite3-adapter (>= 60)
   byebug
   capybara
   chromedriver-helper
