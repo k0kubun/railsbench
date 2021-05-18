@@ -6,6 +6,7 @@ gem 'sqlite3', platforms: [:mri, :truffleruby]
 gem 'activerecord-jdbcsqlite3-adapter', '>= 60', platforms: [:jruby]
 gem 'puma'
 gem 'sass-rails'
+gem 'psych', '< 4' # https://bugs.ruby-lang.org/issues/17866#note-2
 gem 'uglifier'
 
 gem 'coffee-rails'

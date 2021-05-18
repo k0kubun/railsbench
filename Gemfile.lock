@@ -100,6 +100,7 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
+    jar-dependencies (0.4.1)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jdbc-sqlite3 (3.28.0)
@@ -127,6 +128,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.3-x86-mingw32)
       racc (~> 1.4)
+    psych (3.3.2)
+    psych (3.3.2-java)
+      jar-dependencies (>= 0.1.7)
     public_suffix (4.0.6)
     puma (5.2.2)
       nio4r (~> 2.0)
@@ -240,6 +244,7 @@ DEPENDENCIES
   coffee-rails
   jbuilder
   listen
+  psych (< 4)
   puma
   rails (= 6.0.3.7)
   sass-rails
@@ -254,4 +259,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.2.3
+   2.2.15
