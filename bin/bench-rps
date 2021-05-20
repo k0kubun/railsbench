@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+puts RUBY_DESCRIPTION
+
+#
+# Usage: BENCHMARK=1000 ITERS=100 bin/bench-rps
+#
+
+ENV['RAILS_ENV'] ||= 'production'
+require_relative '../config/boot'
+require 'bundler/setup'
+require_relative '../config/environment'
+
+Signal.trap(:INT) do
+  puts
+  exit!
+end
+
+class Bench
+  def initialize(benchmark:, iters:, path:)
+    @benchmark = benchmark
+    @iters = iters
+    @env = Rack::MockRequest.env_for(path, method: Rack::GET)
+
+    status, _, body = Rails.application.call(@env)
+    if status != 200
+      abort "===\n#{body.join}===\nExpected status to be 200 but got #{status}."
+    end
+  end
+
+  def run
+    app = Rails.application
+    env = @env
+    clock = Process::CLOCK_MONOTONIC
+
+    i = 1
+    j = 1
+    while i <= @iters
+      durations = []
+      while j <= i * @benchmark
+        dup_env = env.dup
+        started_at = Process.clock_gettime(clock)
+        app.call(dup_env)
+        durations << Process.clock_gettime(clock) - started_at
+
+        if j == i * @benchmark
+          puts "\r#{j}: #{"%.1f" % (@benchmark / durations.inject(&:+))}"
+        else
+          print "\r#{j}"
+        end
+
+        j += 1
+      end
+      i += 1
+    end
+  end
+end
+
+bench = Bench.new(
+  benchmark: Integer(ENV.fetch('BENCHMARK', 1000)),
+  iters: Integer(ENV.fetch('ITERS', 100)),
+  path: ARGV.first || '/posts/1',
+).run
