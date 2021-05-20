@@ -3,7 +3,7 @@
 puts RUBY_DESCRIPTION
 
 #
-# Usage: BENCHMARK=1000 ITERS=100 bin/bench-rps
+# Usage: BENCHMARK=1000 ITERS=1000 bin/bench-rps
 #
 
 ENV['RAILS_ENV'] ||= 'production'
@@ -58,6 +58,6 @@ end
 
 bench = Bench.new(
   benchmark: Integer(ENV.fetch('BENCHMARK', 1000)),
-  iters: Integer(ENV.fetch('ITERS', 100)),
+  iters: Integer(ENV.fetch('ITERS', 1000)),
   path: ARGV.first || '/posts/1',
 ).run
