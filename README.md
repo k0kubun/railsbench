@@ -17,6 +17,10 @@ rails g scaffold post title:string body:text published:boolean
 Populate database and assets for `RAILS_ENV=production`.
 
 ```bash
+# Ubuntu
+sudo apt install libsqlite3-dev nodejs npm
+sudo npm install -g yarn
+
 bundle install
 bundle exec rake db:create db:migrate db:seed RAILS_ENV=production
 bundle exec rake assets:precompile RAILS_ENV=production
