@@ -61,8 +61,6 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     bindex (0.8.1)
-    bootsnap (1.7.5)
-      msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.8)
@@ -88,7 +86,6 @@ GEM
     mini_mime (1.0.3)
     mini_portile2 (2.5.3)
     minitest (5.14.4)
-    msgpack (1.4.2)
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
@@ -176,7 +173,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (>= 1.4.4)
   byebug
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -191,4 +187,4 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 BUNDLED WITH
-   2.2.3
+   2.2.22
