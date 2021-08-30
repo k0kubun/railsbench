@@ -24,6 +24,9 @@ module Railsbench
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # For benchmarking MJIT of Ruby 2.6 - 3.0. It's not necessary for Ruby 3.1.
+    config.autoloader = :classic
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
