@@ -32,6 +32,7 @@ class Bench
       RubyVM.reset_debug_counters
     end
     if defined?(RubyVM::MJIT) && RubyVM::MJIT.enabled?
+      t = Time.now
       RubyVM::MJIT.pause
       app.call(env.dup) # issue recompile
       RubyVM::MJIT.resume
@@ -40,6 +41,7 @@ class Bench
       RubyVM::MJIT.resume
       RubyVM::MJIT.pause # finish recompile
       app.call(env.dup)
+      puts "MJIT pauses took: #{Time.now - t}s"
     end
 
     if use_perf = ENV.key?('PERF')
