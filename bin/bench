@@ -5,6 +5,7 @@ puts RUBY_DESCRIPTION
 # Usage:
 #   WARMUP=0 BENCHMARK=10000 bin/bench
 #   PROFILE=wall INTERVAL=100 WARMUP=1 BENCHMARK=1000 bin/bench
+#   RESULTS_FILE=results.csv WARMUP=1 BENCHMARK=1000 bin/bench
 
 ENV['RAILS_ENV'] ||= 'production'
 require_relative '../config/boot'
@@ -12,10 +13,19 @@ require 'bundler/setup'
 require_relative '../config/environment'
 
 class Bench
-  def initialize(warmup:, benchmark:, path:)
+  PERCENTILES = [50, 66, 75, 80, 90, 95, 98, 99, 100].freeze
+
+  def initialize(warmup:, benchmark:, path:, results_file:)
     @warmup = warmup
     @benchmark = benchmark
     @env = Rack::MockRequest.env_for(path, method: Rack::GET)
+    @durations = []
+    if results_file
+      require 'csv'
+      file = File.open(results_file, 'a')
+      @results_file = CSV.new(file)
+      @results_file << ['rps', *PERCENTILES] if File.empty?(file)
+    end
 
     status, _, body = Rails.application.call(@env)
     if status != 200
@@ -47,13 +57,12 @@ class Bench
     if use_perf = ENV.key?('PERF')
       pid = Process.spawn('perf', 'stat', '-p', Process.pid.to_s, '-e', 'task-clock,cycles,instructions,branches,branch-misses,cache-misses,cache-references,l1d_pend_miss.pending_cycles,l1d_pend_miss.pending_cycles_any,l2_rqsts.all_code_rd,l2_rqsts.code_rd_hit,dsb2mite_switches.penalty_cycles,icache.hit,icache.ifdata_stall,icache.ifetch_stall,icache.misses,idq.all_dsb_cycles_4_uops,idq.all_dsb_cycles_any_uops,idq.all_mite_cycles_4_uops,idq.all_mite_cycles_any_uops,idq.dsb_cycles,idq.dsb_uops,l2_rqsts.code_rd_hit,l2_rqsts.code_rd_miss')
     end
-    durations = []
     i = 0
     while i < @benchmark
       dup_env = env.dup
       started_at = Process.clock_gettime(clock)
       app.call(dup_env)
-      durations << Process.clock_gettime(clock) - started_at
+      @durations << Process.clock_gettime(clock) - started_at
 
       i += 1
       print "\rBenchmark: #{i}/#{@benchmark}"
@@ -63,12 +72,7 @@ class Bench
       Process.wait(pid)
     end
 
-    puts "\rBenchmark: #{@benchmark} requests"
-    puts
-    puts "Request per second: #{'%.1f' % (@benchmark / durations.inject(&:+))} [#/s] (mean)"
-    puts
-    puts "Percentage of the requests served within a certain time (ms)"
-    show_percentiles(durations)
+    output_results
   end
 
   def profile(mode:, interval:)
@@ -106,23 +110,40 @@ class Bench
     puts "\rWarmup: #{@warmup} requests" if i > 0
   end
 
-  def show_percentiles(durations)
-    percentiles = [50, 66, 75, 80, 90, 95, 98, 99, 100]
-    results = {}
+  def rps
+    @benchmark / @durations.inject(&:+)
+  end
 
-    durations.sort.each_with_index do |duration, index|
-      percentile = (index / durations.size.to_f) * 100
+  def response_times
+    results = {}
+    percentiles = PERCENTILES
+
+    @durations.sort.each_with_index do |duration, index|
+      percentile = (index / @durations.size.to_f) * 100
       matched, percentiles = percentiles.partition { |threshold| percentile >= threshold }
 
       matched.each do |match|
-        results[match] = duration
+        results[match] = duration * 1000
       end
       break if percentiles.empty?
     end
-    results[100] = durations.max
+    results[100] = @durations.max * 1000
 
-    results.each do |percentile, duration|
-      puts " #{"%3d" % percentile}% #{"%7.2f" % (duration * 1000)}"
+    results
+  end
+
+  def output_results
+    puts "\rBenchmark: #{@benchmark} requests"
+    puts
+    puts "Request per second: #{'%.1f' % (rps)} [#/s] (mean)"
+    puts
+    puts "Percentage of the requests served within a certain time (ms)"
+    response_times.each do |percentile, duration|
+      puts " #{"%3d" % percentile}% #{"%7.2f" % (duration)}"
+    end
+
+    if @results_file
+      @results_file << [rps, *response_times.values]
     end
   end
 end
@@ -131,6 +152,7 @@ bench = Bench.new(
   warmup: Integer(ENV.fetch('WARMUP', 0)),
   benchmark: Integer(ENV.fetch('BENCHMARK', 10000)),
   path: ARGV.first || '/posts/1',
+  results_file: ENV.fetch('RESULTS_FILE', nil)
 )
 if ENV.key?('PROFILE')
   bench.profile(
