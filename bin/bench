@@ -20,12 +20,7 @@ class Bench
     @benchmark = benchmark
     @env = Rack::MockRequest.env_for(path, method: Rack::GET)
     @durations = []
-    if results_file
-      require 'csv'
-      file = File.open(results_file, 'a')
-      @results_file = CSV.new(file)
-      @results_file << ['rps', *PERCENTILES] if File.empty?(file)
-    end
+    @results_file = results_file
 
     status, _, body = Rails.application.call(@env)
     if status != 200
@@ -143,7 +138,11 @@ class Bench
     end
 
     if @results_file
-      @results_file << [rps, *response_times.values]
+      require 'csv'
+      file = File.open(@results_file, 'a')
+      csv = CSV.new(file)
+      csv << ['rps', *PERCENTILES] if File.empty?(file)
+      csv << [rps, *response_times.values]
     end
   end
 end
